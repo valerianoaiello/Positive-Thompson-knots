@@ -6,7 +6,7 @@ from sympy.combinatorics import Permutation
 
 #conta l'ordine dei cicli (non disgiunti) nel numero finale di orbite?
 
-def bottompermutation(n: int) -> Permutation:
+def bottom_permutation(n: int) -> Permutation:
     if n%2==0:
         print('The number is even')
         exit(0)
@@ -24,5 +24,5 @@ def bottompermutation(n: int) -> Permutation:
     return p
 
 if __name__ == '__main__':
-    print(bottompermutation(5))
-    print(bottompermutation(7))
+    print(bottom_permutation(5))
+    print(bottom_permutation(7))
