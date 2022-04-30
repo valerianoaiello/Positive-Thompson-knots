@@ -35,8 +35,8 @@ def top_permutation(n: int, v: np.array) -> Permutation:
         p=Permutation(0, 2)(1, 3)
     else:
         w = np.nonzero(v)[0]
-        a=len(w)-1# we find the index of the last non-zero entry in our vector v
-        # v[a] is the value of the last non-zero entry in our vector v
+        a=w[0]#this is the index of the first non-zero entry in the vector v
+        # v[a] is the value of the first non-zero entry in our vector v
         # print('w=', w, 'a=', a, 'b=', b, 'v[a]=', v[a])
         v[a]=v[a]-1
           #  print('v[a]=', v[a])
