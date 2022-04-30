@@ -44,34 +44,30 @@ def top_permutation(n: int, v: np.array) -> Permutation:
         v_prime=v
           #  q=Permutation(a,a+2)
         p_prime=top_permutation(n-2, v_prime)
-        print(p_prime.array_form)
+
         z=p_prime.array_form 
-        print('z = ', type(z))
-#        exit(0)
+
+
         m=len(z)
-#        print(z)
+
         for i in range(m):
-            if z[i]>=i and z[i] >= a+2:
+            if z[i]>i and z[i] >= a+2:
+                print("(i, z[i]) = ", i, z[i])
+
                 r=Permutation(i, z[i])
                 s=Permutation(i,z[i]+2)
-#                z[i]=z[i]+2
-                z=Permutation(z*r*s)
-                print(z)
+                z=list(z*r*s)
+
+                
             elif z[i]==a+1:
                 r=Permutation(i, z[i])
                 s=Permutation(i,z[i]+1)
-#                z[i]=z[i]+2
-                z=Permutation(z*r*s)
-#                z[i]=i+1
-                print(z)
-#                r= Permutation(i,i+1)
- #               print(p_prime, r, '=')
-  #              p_prime=Permutation(p_prime*r)
-   #             print(p_prime)
-        q=Permutation(a+1,a+3) 
-        print(q, z, '=')
-        p_prime=Permutation(q*z)
-        print(p_prime)
+                z=list(z*r*s)
+
+        q=Permutation(a+1,a+3)
+        
+        p_prime=list(q*Permutation(z))
+        print("prova")
         p=p_prime
     return p
  
