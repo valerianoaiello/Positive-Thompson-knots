@@ -28,14 +28,14 @@ def bottom_permutation(n: int) -> Permutation:
 
 #this function works for F_{3,+}, in order to use it for F_+ the components of the vector v with odd
 #indices must be zero
-def top_permutation(n, v):
+def top_permutation(n: int, v: np.array) -> np.array:
     if n%2==0:
         print('The number is even')
         exit(0)
     if n==1:
-        p=[1,0]
+        p=np.array([1,0])
     elif n==3:
-        p=[2,3,0,1]
+        p=np.array([2,3,0,1])
     else:
         z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
         k=len(z)
@@ -76,13 +76,15 @@ def top_permutation(n, v):
 
 
 if __name__ == '__main__':
-    p=top_permutation(7, [1,0,1,0])
+    p=top_permutation(7, np.array([1,0,1,0]))
     p=Permutation(p)
-    p=top_permutation(5, [0,1,0])
+    print('v=', [1,0,1,0], 'permutation = ', p)
+    p=top_permutation(5, np.array([0,1,0]))
     p=Permutation(p)
-    print('permutation = ', p)
-    p: Permutation =top_permutation(1, np.zeros(3))
-    print('permutation = ', p)
+    print('v=', [0,1,0],'permutation = ', p)
+    p=top_permutation(9, np.array([3,0,0]))
+    p=Permutation(p)
+    print('v=', [3,0,0], 'permutation = ', p)
 
     # p_prime=Permutation(1, 3)
     # z=p_prime.array_form 
