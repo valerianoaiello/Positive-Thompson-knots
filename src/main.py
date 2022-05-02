@@ -6,6 +6,7 @@ from sympy.combinatorics import Permutation
 #This function returns a premutation on {0,1,...,n}
 #https://docs.sympy.org/latest/modules/combinatorics/permutations.html
 #conta l'ordine dei cicli (non disgiunti) nel numero finale di orbite?
+#in realtà n è un parametro superfluo della funzione top permutation
 
 def bottom_permutation(n: int) -> Permutation:
     if n%2==0:
@@ -25,61 +26,67 @@ def bottom_permutation(n: int) -> Permutation:
     return p
 
 
-def top_permutation(n: int, v: np.array) -> Permutation:
-    p=Permutation(size=n+1)
-#    print(p.size)
-#    print('v=',v)
+#this function works for F_{3,+}, in order to use it for F_+ the components of the vector v with odd
+#indices must be zero
+def top_permutation(n, v):
+    if n%2==0:
+        print('The number is even')
+        exit(0)
     if n==1:
-        p=Permutation(0, 1)
+        p=[1,0]
     elif n==3:
-        p=Permutation(0, 2)(1, 3)
+        p=[2,3,0,1]
     else:
-        w = np.nonzero(v)[0]
-        a=w[0]#this is the index of the first non-zero entry in the vector v
+        z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
+        k=len(z)
+        a=z[k-1]#this is the index of the last non-zero entry in the vector v
         # v[a] is the value of the first non-zero entry in our vector v
-        # print('w=', w, 'a=', a, 'b=', b, 'v[a]=', v[a])
         v[a]=v[a]-1
-          #  print('v[a]=', v[a])
-        m=n-2
+
         v_prime=v
-          #  q=Permutation(a,a+2)
-        p_prime=top_permutation(n-2, v_prime)
-
-        z=p_prime.array_form 
-
-
-        m=len(z)
-
-        for i in range(m):
-            if z[i]>i and z[i] >= a+2:
-                print("(i, z[i]) = ", i, z[i])
-
-                r=Permutation(i, z[i])
-                s=Permutation(i,z[i]+2)
-                z=list(z*r*s)
-
-                
-            elif z[i]==a+1:
-                r=Permutation(i, z[i])
-                s=Permutation(i,z[i]+1)
-                z=list(z*r*s)
-
-        q=Permutation(a+1,a+3)
-        
-        p_prime=list(q*Permutation(z))
-        print("prova")
-        p=p_prime
+        w=top_permutation(n-2, v_prime)
+        p=np.zeros(n+1)
+        for i in range(n-1):
+            if i <= a and w[i]<=a:
+                p[i]=w[i]
+            elif i <= a and w[i]==a+1:
+                p[i]=w[i]+1
+                print("i=",i,"p[i]=", p[i],"case 1")
+            elif i <= a and w[i]>=a+2:
+                p[i]=w[i]+2
+                print("i=",i,"p[i]=", p[i],"case 2")
+            elif i >= a+2 and w[i]>=a+2:
+                p[i+2]=w[i]+2
+                print("i=",i,"p[i+2]=", p[i],"case 3")
+            elif i >= a+2 and w[i]<=a:
+                p[i+2]=w[i]                
+                print("i=",i,"p[i+2]=", p[i+2],"case 4")
+            elif i >= a+2 and w[i]==a+1:
+                p[i+2]=a+2
+                print("i=",i,"p[i]=", p[i+2],"case 5")
+            elif i == a+1 and w[i]>=a+2:
+                p[i+1]=w[i]+2
+                print("i=",i,"p[i]=", p[i],"case 6")
+            elif i == a+1 and w[i]<=a:
+                p[i+1]=w[i]
+                print("i=",i,"p[i+1]=", p[i],"case 7") 
+        p[a+1]=a+3
+        p[a+3]=a+1
     return p
- 
- 
-
-
-
-
 
 
 if __name__ == '__main__':
-    print('inizio')
-    p: Permutation =top_permutation(5, np.array([1, 0]))
+    p=top_permutation(7, [1,0,1,0])
+    p=Permutation(p)
+    p=top_permutation(5, [0,1,0])
+    p=Permutation(p)
+    print('permutation = ', p)
+    p: Permutation =top_permutation(1, np.zeros(3))
     print('permutation = ', p)
 
+    # p_prime=Permutation(1, 3)
+    # z=p_prime.array_form 
+    # print("z=",p_prime)
+    # r=Permutation(1, z[0])
+    # z=list(z*r)
+    # print("r=",r, "zr=", Permutation(z))
