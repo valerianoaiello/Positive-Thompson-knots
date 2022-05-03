@@ -1,6 +1,9 @@
 import numpy as np
 from sympy.combinatorics import Permutation
 import time
+import csv
+import sklearn
+
 
 #This function computes the permutation associated with the bottom tree of a positive Thompson element
 #n is odd number
@@ -148,4 +151,9 @@ if __name__ == '__main__':
     print('v=', [0,0,3,0,0], 'permutation = ', p, "n=", number_leaves_ternary(np.array([0,0,3,0,0])))
     print("number of leaves in binary tree:", number_leaves_binary(np.array([0,0,3,0,0])))
  
- 
+    with open('data.csv', 'w', newline='') as file:
+        for i in range(5):
+            
+            writer = csv.writer(file)
+            writer.writerow(["SN", "Name", "Contribution"])
+
