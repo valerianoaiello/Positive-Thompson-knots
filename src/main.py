@@ -1,5 +1,6 @@
 import numpy as np
 from sympy.combinatorics import Permutation
+import time
 
 #This function computes the permutation associated with the bottom tree of a positive Thompson element
 #n is odd number
@@ -108,12 +109,29 @@ def number_leaves_ternary(v: np.array)->int:
 
 
 if __name__ == '__main__':
+
     p=top_permutation(5, np.array([1,0,0]))
     p=Permutation(p)
     print('v=', [1,0,0], 'permutation = ', p, "number of leaves in ternary tree:", number_leaves_ternary(np.array([1,0,0])))
     print("number of leaves in binary tree:", number_leaves_binary(np.array([1,0,0])))
+
     p=top_permutation(7, np.array([1,0,1,0]))
+    
+    #time test
+    st = time.time()
     p=Permutation(p)
+    et= time.time()    
+    print("time needed:", et-st)
+    st = time.time()
+    n=number_leaves_ternary(np.array([1,0,1,0]))
+    et= time.time()    
+    print("time needed:", et-st) 
+    st = time.time()
+    bottom_permutation(n)
+    et= time.time()    
+    print("time needed:", et-st)
+    #end of test
+    
     print('v=', [1,0,1,0], 'permutation = ', p, "number of leaves in ternary tree:", number_leaves_ternary(np.array([1,0,1,0])))
     print("number of leaves in binary tree:", number_leaves_binary(np.array([1,0,1,0])))
     # p=top_permutation(5, np.array([0,1,0]))
