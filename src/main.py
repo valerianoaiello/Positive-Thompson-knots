@@ -51,40 +51,64 @@ def top_permutation(n: int, v: np.array) -> np.array:
                 p[i]=w[i]
             elif i <= a and w[i]==a+1:
                 p[i]=w[i]+1
-                print("i=",i,"p[i]=", p[i],"case 1")
+   #             print("i=",i,"p[i]=", p[i],"case 1")
             elif i <= a and w[i]>=a+2:
                 p[i]=w[i]+2
-                print("i=",i,"p[i]=", p[i],"case 2")
+   #             print("i=",i,"p[i]=", p[i],"case 2")
             elif i >= a+2 and w[i]>=a+2:
                 p[i+2]=w[i]+2
-                print("i=",i,"p[i+2]=", p[i],"case 3")
+  #              print("i=",i,"p[i+2]=", p[i],"case 3")
             elif i >= a+2 and w[i]<=a:
                 p[i+2]=w[i]                
-                print("i=",i,"p[i+2]=", p[i+2],"case 4")
+ #               print("i=",i,"p[i+2]=", p[i+2],"case 4")
             elif i >= a+2 and w[i]==a+1:
                 p[i+2]=a+2
-                print("i=",i,"p[i]=", p[i+2],"case 5")
+#                print("i=",i,"p[i]=", p[i+2],"case 5")
             elif i == a+1 and w[i]>=a+2:
                 p[i+1]=w[i]+2
-                print("i=",i,"p[i]=", p[i],"case 6")
+ #               print("i=",i,"p[i]=", p[i],"case 6")
             elif i == a+1 and w[i]<=a:
                 p[i+1]=w[i]
-                print("i=",i,"p[i+1]=", p[i],"case 7") 
+ #               print("i=",i,"p[i+1]=", p[i],"case 7") 
         p[a+1]=a+3
         p[a+3]=a+1
     return p
 
+#this function takes a vector representing an element of F_+ and returns the number of leaves of its binary tree.
+#it doesn't work for F_{3,+}
+#def number_leaves(v: np.array)->int:
+#    return 
+
+#this function find the number of leaves of the elements F_{3,+}
+def number_leaves_ternary(v: np.array)->int:
+    a=len(np.nonzero(v)[0])-1#find the last non-zero component
+    n=np.sum(v)*2+3
+    return n
+
+
+#this function find the number of leaves of the elements F_+
+def number_leaves_binary(v: np.array)->int:
+    n=(number_leaves_ternary(v)+1)/2#find the last non-zero component
+    return n
+
 
 if __name__ == '__main__':
+    p=top_permutation(5, np.array([1,0,0]))
+    p=Permutation(p)
+    print('v=', [1,0,0], 'permutation = ', p, "number of leaves in ternary tree:", number_leaves_ternary(np.array([1,0,0])))
+    print("number of leaves in binary tree:", number_leaves_binary(np.array([1,0,0])))
     p=top_permutation(7, np.array([1,0,1,0]))
     p=Permutation(p)
-    print('v=', [1,0,1,0], 'permutation = ', p)
+    print('v=', [1,0,1,0], 'permutation = ', p, "number of leaves in ternary tree:", number_leaves_ternary(np.array([1,0,1,0])))
+    print("number of leaves in binary tree:", number_leaves_binary(np.array([1,0,1,0])))
     p=top_permutation(5, np.array([0,1,0]))
     p=Permutation(p)
-    print('v=', [0,1,0],'permutation = ', p)
+    print('v=', [0,1,0],'permutation = ', p, "n=", number_leaves_ternary(np.array([0,1,0])))
     p=top_permutation(9, np.array([3,0,0]))
     p=Permutation(p)
-    print('v=', [3,0,0], 'permutation = ', p)
+    print('v=', [3,0,0], 'permutation = ', p, "n=", number_leaves_ternary(np.array([3,0,0])))
+    print("number of leaves in binary tree:", number_leaves_binary(np.array([3,0,0])))
+    print('v=', [3,0,0,0,1], number_leaves_ternary(np.array([3,0,0,0,1])))
 
     # p_prime=Permutation(1, 3)
     # z=p_prime.array_form 
