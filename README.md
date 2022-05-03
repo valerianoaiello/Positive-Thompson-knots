@@ -19,11 +19,11 @@ python src/main.py
 ```
 
 ## Update Dependencies
-## Install New Package
+### Install New Package
 ```bash
 pip install <package_name>
 ```
-## Update requirements.txt
+### Update requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
