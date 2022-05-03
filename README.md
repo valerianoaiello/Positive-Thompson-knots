@@ -41,7 +41,7 @@ git add <file_1> <file_2> ... <file_n>
 ```bash
 git commit -m "Commit message"
 ```
-- push changes lo remote repository
+- push changes to remote repository
 ```bash
 git push
 ```
