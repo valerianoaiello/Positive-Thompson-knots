@@ -32,7 +32,7 @@ def bottom_permutation(n: int) -> Permutation:
 
 #this function works for F_{3,+}, in order to use it for F_+ the components of the vector v with odd
 #indices must be zero
-def top_permutation(n: int, v: np.array) -> np.array:
+def top_permutation(n: int, v: np.ndarray) -> np.ndarray:
     if n%2==0:
         print('The number is even')
         exit(0)
@@ -85,12 +85,12 @@ def top_permutation(n: int, v: np.array) -> np.array:
 
 
 #this function find the number of leaves in the reduced binary tree representing an element in F_+
-def number_leaves_binary(v: np.array)->int:
+def number_leaves_binary(v: np.ndarray) -> int:
     n=(number_leaves_ternary(v)+1)/2
     return n
 
 #this function find the number of leaves in the reduced ternary tree representing an element in F_{3,+}
-def number_leaves_ternary(v: np.array)->int:
+def number_leaves_ternary(v: np.ndarray) -> int:
     z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
     k=len(z)
     a=z[k-1]#this is the index of the last non-zero entry in the vector v
@@ -108,7 +108,17 @@ def number_leaves_ternary(v: np.array)->int:
 #        print("n=",n)
     return n
 
+"""
+v = (v_1, v_2, ..., v_n)
+0 <= v_i < m, v_i in N, for every i
+"""
+def generate_vectors(n: int, m: int) -> np.ndarray:
+    v = list(range(m))
+    l = [v for i in range(n)]
 
+    # il secondo parametro di reshape (in questo caso 10) è il numero di vettori in meshgrid
+    w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
+    return w
 
 
 if __name__ == '__main__':
