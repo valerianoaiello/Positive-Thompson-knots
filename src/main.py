@@ -116,7 +116,6 @@ def generate_vectors(n: int, m: int) -> np.ndarray:
     v = list(range(m))
     l = [v for i in range(n)]
 
-    # il secondo parametro di reshape (in questo caso 10) è il numero di vettori in meshgrid
     w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
     return w
 
