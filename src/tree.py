@@ -81,7 +81,7 @@ def top_permutation(n: int, v: np.array) -> np.ndarray:
 
         v_prime=v
         w=top_permutation(n-2, v_prime)
-        p=np.zeros(n+1)
+        p=np.zeros(n+1).astype(int)
         for i in range(n-1):
             if i <= a and w[i]<=a:
                 p[i]=w[i]
@@ -114,6 +114,18 @@ def top_permutation(n: int, v: np.array) -> np.ndarray:
 
 
 def whole_permutation(n: int, v: np.array) -> np.ndarray:
-    p=top_permutation(n,v)
-    q=bottom_permutation(n)
+    p = top_permutation(n, v)
+    q = bottom_permutation(n)
+    print("P: ", p)
+    print("Q: ", q)
+    
+    v: list = []
+    v.append(0)
+    p[0]
+    while p[0] != 0:
+        v.append(p[0])
+        v.append(q[p[0]])
+if __name__ == '__main__':
+    whole_permutation(5, np.array([1, 0, 0]))
+
     
