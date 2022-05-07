@@ -120,12 +120,49 @@ def whole_permutation(n: int, v: np.array) -> np.ndarray:
     print("Q: ", q)
     
     v: list = []
-    v.append(0)
-    p[0]
-    while p[0] != 0:
-        v.append(p[0])
-        v.append(q[p[0]])
-if __name__ == '__main__':
-    whole_permutation(5, np.array([1, 0, 0]))
+    i=0
+    while True:
+        if p[i] not in v:       
+            v.append(p[i])
+            print('p[',i,']',p[i])
+            i=p[i]
+            if q[i] not in v:
+                v.append(q[i])
+                print('q[',i,']',q[i])
+                i=q[i]
+            else:
+                break
+        else:
+            break
 
+    # i=0
+    # i=p[i]
+    #     i=q[i]
+    # while i != 0:
+    #     if p[i] not in v:
+    #         v.append(p[i])
+    #         if q[p[i]] not in v:
+    #             v.append(q[p[i]])
+    #             i=q[p[i]]
+    #             print('ciaone1')
+    #         else:
+    #             i=p[i]
+    #             print('ciaone2')
+    #     print('ciao')
+
+    # secret_word = "python"
+    # counter = 0
+
+    # while True:
+    #     word = input("Enter the secret word: ").lower()
+    #     counter = counter + 1
+    #     if word == secret_word:
+    #         break
+    return v
+
+
+
+if __name__ == '__main__':
+    r=whole_permutation(5, np.array([1, 0, 0]))
+    print(r)
     

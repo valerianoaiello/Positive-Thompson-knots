@@ -7,7 +7,7 @@ python3 -m venv <env_folder>
 ```
 ### Activate Environment
 ```bash
-source <env_floder>/bin/activate
+source <env_folder>/bin/activate
 ```
 ### Install Dependencies
 ```bash
