@@ -138,8 +138,6 @@ def whole_permutation(n: int, v: np.array) -> np.ndarray:
 
 
 
-if __name__ == '__main__':
-    r=whole_permutation(5, np.array([1, 0, 0]))
-    print(r)
-    r=whole_permutation(5, np.array([0, 1, 0]))
-    print(r)
+if __name__ == '__main__': 
+    n=number_leaves_ternary(np.array([1, 0, 0, 0]))
+    print(n, Permutation(bottom_permutation(n)))

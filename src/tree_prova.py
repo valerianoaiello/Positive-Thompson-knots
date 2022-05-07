@@ -163,7 +163,7 @@ def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
     return tot
 
 if __name__ == '__main__':
-    w = np.array([1, 0, 0])
+    w = np.array([0, 0, 1])
     print(f"W={w}")
     r=whole_permutation(5, w)
     print(f"W={w}")
