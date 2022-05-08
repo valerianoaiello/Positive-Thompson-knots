@@ -12,5 +12,5 @@
 # Da fare
 - cambiare funzione generate_vectors in modo tale che la prima entrata sia sempre diversa da zero
 - se possibile e non costa nulla generare i vettori in ordine lessicografico
-
+- eliminare virgolette in data.csv
 
