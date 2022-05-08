@@ -37,7 +37,7 @@ def number_leaves_ternary(v: np.ndarray)->int:
     else:
         v_prime = v.copy()
         v_prime[a]=v_prime[a]-1
-        n=number_leaves_ternary(v)+2
+        n=number_leaves_ternary(v_prime)+2
 #        print("n=",n)
     return n
 
@@ -137,9 +137,7 @@ def whole_permutation(n: int, v: np.ndarray) -> np.ndarray:
 
 def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
     p = top_permutation(n, v)
-    q = bottom_permutation(n)
-    print("P: ", p)
-    print("Q: ", q)
+    q = bottom_permutation(n) 
     
     tot = []
     
@@ -149,11 +147,9 @@ def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
             while True:
                 if p[i] not in l:       
                     l.append(p[i])
-                    print('p[',i,']',p[i])
                     i=p[i]
                     if q[i] not in l:
                         l.append(q[i])
-                        print('q[',i,']',q[i])
                         i=q[i]
                     else:
                         break
@@ -163,11 +159,15 @@ def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
     return tot
 
 if __name__ == '__main__':
-    w = np.array([0, 0, 1])
-    print(f"W={w}")
-    r=whole_permutation(5, w)
-    print(f"W={w}")
-    print(f"PERMUTATION = {r}")
-    r=whole_permutation_2(5, w)
-    print(f"W={w}")
-    print(f"PERMUTATION 2 = {r}")
+    # w = np.array([0, 0, 1])
+    # print(f"W={w}")
+    # r=whole_permutation(5, w)
+    # print(f"W={w}")
+    # print(f"PERMUTATION = {r}")
+    # r=whole_permutation_2(5, w)
+    # print(f"W={w}")
+    # print(f"PERMUTATION 2 = {r}")
+    v=np.array([0, 1, 0, 0, 0, 1, 0, 0])
+    w=number_leaves_ternary(v)
+    print('w',w)
+

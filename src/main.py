@@ -4,11 +4,10 @@ import time
 import csv
 import sklearn
 
-from tree import generate_vectors, number_leaves_binary, number_leaves_ternary, bottom_permutation, top_permutation
-from tree_2 import whole_permutation_2
+from tree_prova import generate_vectors, number_leaves_binary, number_leaves_ternary, bottom_permutation, top_permutation, whole_permutation_2
 
 
-a=4#number components in basis vectors
+a=5#number components in basis vectors
 b=3#exponents
 A=generate_vectors(a,b) 
 #a=height
@@ -26,10 +25,11 @@ with open('data.csv', 'w') as f:
 
     for i in range(1,b**a):
         v=np.array(A[i][:])
+        print('v',v)
         n=number_leaves_ternary(v)
         q=Permutation(bottom_permutation(n))
         p=Permutation(top_permutation(n, v))
-        r=whole_permutation_2(n,A[i][:])
+        r=whole_permutation_2(n,v)
 #        print(n,v,q,p)
-        writer.writerow([n, A[i][:], q, p, r, len(r)])
+        writer.writerow([n, v, q, p, r, len(r)])
 # ###       print(A[i][:].shape)

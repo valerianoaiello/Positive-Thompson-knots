@@ -9,3 +9,8 @@
 - sistemare limiti a ricorsione guardando questo link https://stackoverflow.com/questions/6809402/python-maximum-recursion-depth-exceeded-while-calling-a-python-object
 
 
+# Da fare
+- cambiare funzione generate_vectors in modo tale che la prima entrata sia sempre diversa da zero
+- se possibile e non costa nulla generare i vettori in ordine lessicografico
+
+
