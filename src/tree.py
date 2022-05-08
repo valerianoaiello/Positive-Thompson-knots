@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.metrics import v_measure_score
 from sympy.combinatorics import Permutation
 
 #Go to https://docs.sympy.org/latest/modules/combinatorics/permutations.html
@@ -16,12 +17,12 @@ def generate_vectors(n: int, m: int) -> np.ndarray:
 
 
 #this function find the number of leaves in the reduced binary tree representing an element in F_+
-def number_leaves_binary(v: np.array)->int:
+def number_leaves_binary(v: np.ndarray)->int:
     n=(number_leaves_ternary(v)+1)/2
     return n
 
 #this function find the number of leaves in the reduced ternary tree representing an element in F_{3,+}
-def number_leaves_ternary(v: np.array)->int:
+def number_leaves_ternary(v: np.ndarray)->int:
     z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
     k=len(z)
     a=z[k-1]#this is the index of the last non-zero entry in the vector v
@@ -34,8 +35,9 @@ def number_leaves_ternary(v: np.array)->int:
     elif k==1 and v[a]==1 and a%2==1:
         n=a+4
     else:
-        v[a]=v[a]-1
-        n=number_leaves_ternary(v)+2
+        v_prime = v.copy()
+        v_prime[a]=v_prime[a]-1
+        n=number_leaves_ternary(v_prime)+2
 #        print("n=",n)
     return n
 
@@ -61,7 +63,7 @@ def bottom_permutation(n: int) -> np.ndarray:
 
 #This function computes the permutation associated with the top tree of a positive Thompson element
 #n is odd number and the permutation acts on {0,1,...,n}
-def top_permutation(n: int, v: np.array) -> np.ndarray:
+def top_permutation(n: int, v: np.ndarray) -> np.ndarray:
     if n%2==0:
         print('The number is even')
         exit(0)
@@ -77,9 +79,8 @@ def top_permutation(n: int, v: np.array) -> np.ndarray:
 #        print('k',k)
         a=z[k-1]#this is the index of the last non-zero entry in the vector v
         # v[a] is the value of the first non-zero entry in our vector v
-        v[a]=v[a]-1
-
-        v_prime=v
+        v_prime=v.copy()
+        v_prime[a]=v_prime[a]-1
         w=top_permutation(n-2, v_prime)
         p=np.zeros(n+1).astype(int)
         for i in range(n-1):
@@ -113,31 +114,60 @@ def top_permutation(n: int, v: np.array) -> np.ndarray:
  #if __name__ == '__main__':
 
 
-def whole_permutation(n: int, v: np.array) -> np.ndarray:
+def whole_permutation(n: int, v: np.ndarray) -> np.ndarray:
     p = top_permutation(n, v)
     q = bottom_permutation(n)
     print("P: ", p)
     print("Q: ", q)
     
-    v: list = []
+    l: list = []
     i=0
     while True:
-        if p[i] not in v:       
-            v.append(p[i])
-            print('p[',i,']',p[i])
+        if p[i] not in l:       
+            l.append(p[i])
             i=p[i]
-            if q[i] not in v:
-                v.append(q[i])
-                print('q[',i,']',q[i])
+            if q[i] not in l:
+                l.append(q[i])
                 i=q[i]
             else:
                 break
         else:
             break
-    return v
+    return l
 
+def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
+    p = top_permutation(n, v)
+    q = bottom_permutation(n) 
+    
+    tot = []
+    
+    for i in range(n):
+        l: list = []
+        if i not in [item for sublist in tot for item in sublist]:
+            while True:
+                if p[i] not in l:       
+                    l.append(p[i])
+                    i=p[i]
+                    if q[i] not in l:
+                        l.append(q[i])
+                        i=q[i]
+                    else:
+                        break
+                else:
+                    break
+            tot.append(l)
+    return tot
 
+if __name__ == '__main__':
+    # w = np.array([0, 0, 1])
+    # print(f"W={w}")
+    # r=whole_permutation(5, w)
+    # print(f"W={w}")
+    # print(f"PERMUTATION = {r}")
+    # r=whole_permutation_2(5, w)
+    # print(f"W={w}")
+    # print(f"PERMUTATION 2 = {r}")
+    v=np.array([0, 1, 0, 0, 0, 1, 0, 0])
+    w=number_leaves_ternary(v)
+    print('w',w)
 
-if __name__ == '__main__': 
-    n=number_leaves_ternary(np.array([1, 0, 0, 0]))
-    print(n, Permutation(bottom_permutation(n)))

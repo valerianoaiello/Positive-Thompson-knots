@@ -4,7 +4,7 @@ import time
 import csv
 import sklearn
 
-from tree_prova import generate_vectors, number_leaves_binary, number_leaves_ternary, bottom_permutation, top_permutation, whole_permutation_2
+from tree import generate_vectors, number_leaves_binary, number_leaves_ternary, bottom_permutation, top_permutation, whole_permutation_2
 
 
 a=5#number components in basis vectors
