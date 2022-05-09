@@ -8,13 +8,14 @@ from sympy.combinatorics import Permutation
 v = (v_1, v_2, ..., v_n)
 0 <= v_i < m, v_i in N, for every i
 """
+
+#questa e' la vecchia version
 def generate_vectors(n: int, m: int) -> np.ndarray:
     v = list(range(m))
     l = [v for i in range(n)]
 
     w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
     return w
-
 
 
 #This function computes the permutation associated with the bottom tree of a positive Thompson element
@@ -145,51 +146,54 @@ def number_leaves_ternary(v: np.ndarray)->int:
     return n
 
 if __name__ == '__main__':
-    k=3
-    v=np.array([1,1, 0, 0, 0, 0])
-    n=number_leaves_ternary(v)
-    print('v=',v,'n=',n)
-    v=np.array([0,1, 0, 0, 0, 0])
-    n=number_leaves_ternary(v)
-    print('v=',v,'n=',n)
-    v=np.array([1, 0, 0, 0, 0])
-    n=number_leaves_ternary(v)
-    print('v=',v,'n=',n)
-    v=np.array([0,0,0,0,1, 0, 0, 0, 0])
-    n=number_leaves_ternary(v)
-    v=np.array([0,0,1, 0, 0, 1, 0])
-    n=number_leaves_ternary(v)
-    print('v=',v,'n=',n)
 
-    v=np.array([0, 0,0, 0,0, 0,1, 0, 0, 0, 0])
-    n=number_leaves_ternary(v)
-    print('v=',v,'n=',n)
+
+
+    # k=3
+    # v=np.array([1,1, 0, 0, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v=',v,'n=',n)
+    # v=np.array([0,1, 0, 0, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v=',v,'n=',n)
     # v=np.array([1, 0, 0, 0, 0])
-    # print('v=',v)
     # n=number_leaves_ternary(v)
-    # print('v',v,'n',n)
+    # print('v=',v,'n=',n)
+    # v=np.array([0,0,0,0,1, 0, 0, 0, 0])
+    # n=number_leaves_ternary(v)
+    # v=np.array([0,0,1, 0, 0, 1, 0])
+    # n=number_leaves_ternary(v)
+    # print('v=',v,'n=',n)
+
+    # v=np.array([0, 0,0, 0,0, 0,1, 0, 0, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v=',v,'n=',n)
+    # # v=np.array([1, 0, 0, 0, 0])
+    # # print('v=',v)
+    # # n=number_leaves_ternary(v)
+    # # print('v',v,'n',n)
 
 
-    # w = np.array([0, 0, 1])
-    # print(f"W={w}")
-    # r=whole_permutation(5, w)
-    # print(f"W={w}")
-    # print(f"PERMUTATION = {r}")
-    # r=whole_permutation_2(5, w)
-    # print(f"W={w}")
-    # print(f"PERMUTATION 2 = {r}")
-    # v=np.array([0, 1, 0, 0, 0, 0, 0, 1])
-    # n=number_leaves_ternary(v)
-    # print('n',n)
-    # v=np.array([1, 1, 0, 0, 0, 0, 0])
-    # n=number_leaves_ternary(v)
-    # print('v',v,'n',n)
-    # v=np.array([2, 1, 0, 0, 0, 0, 0])
-    # n=number_leaves_ternary(v)
-    # print('v',v,'n',n)
-    # v=np.array([0, 0, 0, 0, 1, 0, 0])
-    # n=number_leaves_ternary(v)
-    # print('v',v,'n',n)
-    # v=np.array([0, 1, 0, 0, 1, 0, 0])
-    # n=number_leaves_ternary(v)
-    # print('v',v,'n',n)
+    # # w = np.array([0, 0, 1])
+    # # print(f"W={w}")
+    # # r=whole_permutation(5, w)
+    # # print(f"W={w}")
+    # # print(f"PERMUTATION = {r}")
+    # # r=whole_permutation_2(5, w)
+    # # print(f"W={w}")
+    # # print(f"PERMUTATION 2 = {r}")
+    # # v=np.array([0, 1, 0, 0, 0, 0, 0, 1])
+    # # n=number_leaves_ternary(v)
+    # # print('n',n)
+    # # v=np.array([1, 1, 0, 0, 0, 0, 0])
+    # # n=number_leaves_ternary(v)
+    # # print('v',v,'n',n)
+    # # v=np.array([2, 1, 0, 0, 0, 0, 0])
+    # # n=number_leaves_ternary(v)
+    # # print('v',v,'n',n)
+    # # v=np.array([0, 0, 0, 0, 1, 0, 0])
+    # # n=number_leaves_ternary(v)
+    # # print('v',v,'n',n)
+    # # v=np.array([0, 1, 0, 0, 1, 0, 0])
+    # # n=number_leaves_ternary(v)
+    # # print('v',v,'n',n)
