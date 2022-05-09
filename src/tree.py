@@ -146,7 +146,7 @@ def number_leaves_ternary(v: np.ndarray)->int:
     return n
 
 if __name__ == '__main__':
-
+    print()
 
 
     # k=3
