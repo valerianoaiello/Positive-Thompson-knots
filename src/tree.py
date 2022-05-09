@@ -9,12 +9,13 @@ v = (v_1, v_2, ..., v_n)
 0 <= v_i < m, v_i in N, for every i
 """
 
-#questa e' la vecchia version
+ #m is greater than 3
 def generate_vectors(n: int, m: int) -> np.ndarray:
     v = list(range(m))
     l = [v for i in range(n)]
 
     w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
+
     return w
 
 
@@ -145,8 +146,8 @@ def number_leaves_ternary(v: np.ndarray)->int:
          n=n+1
     return n
 
-if __name__ == '__main__':
-    print()
+#if __name__ == '__main__':
+
 
 
     # k=3

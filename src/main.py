@@ -20,7 +20,6 @@ with open('data.csv', 'w') as f:
     writer.writerow(['leaves', 'vector', 'bottom_permutation', 'top_permutation','permutation', 'orbits'])
     for i in range(1,b**a):
                 v=np.array(A[i][:])
-
                 for i in range(b):
                         for j in range(b):
                                 if i!=j and i+j!=0:
