@@ -123,9 +123,9 @@ def number_leaves_binary(v: np.ndarray)->int:
 def number_leaves_ternary(v: np.ndarray)->int:
     z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
     k=len(z)   
-    m=5#maximal length
-    for i in range(k):
-        m = m + i+3*v[z[i]]
+    m=100#maximal length
+    # for i in range(k):
+    #     m = m + i+3*v[z[i]]
     w=np.array(list(range(m)))
     u=w.copy()
     for i in range(k-1,-1,-1):
@@ -160,6 +160,9 @@ if __name__ == '__main__':
     v=np.array([0,0,1, 0, 0, 1, 0])
     n=number_leaves_ternary(v)
     print('v=',v,'n=',n)
+
+    v=np.array([0, 0,0, 0,0, 0,1, 0, 0, 0, 0])
+    n=number_leaves_ternary(v)
     print('v=',v,'n=',n)
     # v=np.array([1, 0, 0, 0, 0])
     # print('v=',v)
