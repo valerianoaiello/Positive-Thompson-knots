@@ -16,30 +16,6 @@ def generate_vectors(n: int, m: int) -> np.ndarray:
     return w
 
 
-#this function find the number of leaves in the reduced binary tree representing an element in F_+
-def number_leaves_binary(v: np.ndarray)->int:
-    n=(number_leaves_ternary(v)+1)/2
-    return n
-
-#this function find the number of leaves in the reduced ternary tree representing an element in F_{3,+}
-def number_leaves_ternary(v: np.ndarray)->int:
-    z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
-    k=len(z)
-    a=z[k-1]#this is the index of the last non-zero entry in the vector v
-    # v[a] is the value of the first non-zero entry in our vector v
- #   print("k=",k, "a=", a, "v[a]=", v[a])
-    if k==0:
-        n=1
-    elif k==1 and v[a]==1 and a%2==0:
-        n=a+5
-    elif k==1 and v[a]==1 and a%2==1:
-        n=a+4
-    else:
-        v_prime = v.copy()
-        v_prime[a]=v_prime[a]-1
-        n=number_leaves_ternary(v_prime)+2
-#        print("n=",n)
-    return n
 
 #This function computes the permutation associated with the bottom tree of a positive Thompson element
 #n is odd number and the permutation acts on {0,1,...,n}
@@ -113,29 +89,8 @@ def top_permutation(n: int, v: np.ndarray) -> np.ndarray:
 
  #if __name__ == '__main__':
 
-
+ 
 def whole_permutation(n: int, v: np.ndarray) -> np.ndarray:
-    p = top_permutation(n, v)
-    q = bottom_permutation(n)
-    print("P: ", p)
-    print("Q: ", q)
-    
-    l: list = []
-    i=0
-    while True:
-        if p[i] not in l:       
-            l.append(p[i])
-            i=p[i]
-            if q[i] not in l:
-                l.append(q[i])
-                i=q[i]
-            else:
-                break
-        else:
-            break
-    return l
-
-def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
     p = top_permutation(n, v)
     q = bottom_permutation(n) 
     
@@ -158,7 +113,60 @@ def whole_permutation_2(n: int, v: np.ndarray) -> np.ndarray:
             tot.append(l)
     return tot
 
+
+#this function find the number of leaves in the reduced binary tree representing an element in F_+
+def number_leaves_binary(v: np.ndarray)->int:
+    n=(number_leaves_ternary(v)+1)/2
+    return n
+
+#this function find the number of leaves in the reduced ternary tree representing an element in F_{3,+}
+def number_leaves_ternary(v: np.ndarray)->int:
+    z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
+    k=len(z)   
+    m=5#maximal length
+    for i in range(k):
+        m = m + i+3*v[z[i]]
+    w=np.array(list(range(m)))
+    u=w.copy()
+    for i in range(k-1,-1,-1):
+        for j in range(v[z[i]]):
+            w=np.delete(w,z[i]+1)
+            w=np.delete(w,z[i]+1)
+    n=0
+    for i in range(len(w)-1):
+#        print('w[',i,']=',w[i],'u[',i,']=',u[i], 'w[',i,']-u[',i,']=',w[i]-u[i])
+        if w[i+1]-w[i]>=2:
+            n=w[i+1]
+#    print('cont=',cont,'n=', n)
+    if n%2==1:
+        n=n+2
+    else:
+         n=n+1
+    return n
+
 if __name__ == '__main__':
+    k=3
+    v=np.array([1,1, 0, 0, 0, 0])
+    n=number_leaves_ternary(v)
+    print('v=',v,'n=',n)
+    v=np.array([0,1, 0, 0, 0, 0])
+    n=number_leaves_ternary(v)
+    print('v=',v,'n=',n)
+    v=np.array([1, 0, 0, 0, 0])
+    n=number_leaves_ternary(v)
+    print('v=',v,'n=',n)
+    v=np.array([0,0,0,0,1, 0, 0, 0, 0])
+    n=number_leaves_ternary(v)
+    v=np.array([0,0,1, 0, 0, 1, 0])
+    n=number_leaves_ternary(v)
+    print('v=',v,'n=',n)
+    print('v=',v,'n=',n)
+    # v=np.array([1, 0, 0, 0, 0])
+    # print('v=',v)
+    # n=number_leaves_ternary(v)
+    # print('v',v,'n',n)
+
+
     # w = np.array([0, 0, 1])
     # print(f"W={w}")
     # r=whole_permutation(5, w)
@@ -167,7 +175,18 @@ if __name__ == '__main__':
     # r=whole_permutation_2(5, w)
     # print(f"W={w}")
     # print(f"PERMUTATION 2 = {r}")
-    v=np.array([0, 1, 0, 0, 0, 1, 0, 0])
-    w=number_leaves_ternary(v)
-    print('w',w)
-
+    # v=np.array([0, 1, 0, 0, 0, 0, 0, 1])
+    # n=number_leaves_ternary(v)
+    # print('n',n)
+    # v=np.array([1, 1, 0, 0, 0, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v',v,'n',n)
+    # v=np.array([2, 1, 0, 0, 0, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v',v,'n',n)
+    # v=np.array([0, 0, 0, 0, 1, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v',v,'n',n)
+    # v=np.array([0, 1, 0, 0, 1, 0, 0])
+    # n=number_leaves_ternary(v)
+    # print('v',v,'n',n)
