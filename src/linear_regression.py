@@ -17,13 +17,21 @@ m=6#Make this global
 exponents = []
 
 table2 = pd.DataFrame(table) 
-
-
-table2 = pd.DataFrame(table['vector'].to_list(), columns=['x'+str(i) for i in range(m)])
 print(table2.head())
 print(table2.dtypes)
 print(table2.info())
+
+l=table['vector'].to_list()
+l=[i.split(" ") for i in l]
+
+table2 = pd.DataFrame(l, columns=['x'+str(i) for i in range(m)])
+
+
+print(table2.head())
 exit(0)
+
+print(table2.dtypes)
+print(table2.info())
 
 d = {'col1': [[1, 2],[3, 4]]}
 
