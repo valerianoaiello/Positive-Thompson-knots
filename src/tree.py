@@ -1,3 +1,4 @@
+from turtle import shape
 import numpy as np
 from sklearn.metrics import v_measure_score
 from sympy.combinatorics import Permutation
@@ -9,14 +10,6 @@ v = (v_1, v_2, ..., v_n)
 0 <= v_i < m, v_i in N, for every i
 """
 
- #m is greater than 3
-def generate_vectors(n: int, m: int) -> np.ndarray:
-    v = list(range(m))
-    l = [v for i in range(n)]
-
-    w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
-
-    return w
 
 
 #This function computes the permutation associated with the bottom tree of a positive Thompson element
@@ -146,8 +139,47 @@ def number_leaves_ternary(v: np.ndarray)->int:
          n=n+1
     return n
 
-#if __name__ == '__main__':
+def generate_vectors(n: int, m: int) -> np.ndarray:
+    v = list(range(m))
+    l = [v for i in range(n)]
+    print('l',l)
+    w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
+    print(w.shape)
+    for i in range(m): 
+        for j in range(m):
+            if i+j != 0:
+                w=np.hstack((a,b))
+    print(w)
 
+    return w
+
+
+if __name__ == '__main__':
+    print(generate_vectors(3,2))
+    a = np.array([[1, 1], [2, 2], [3, 3]])
+    print(a.shape)
+    b=np.array([[5], [6],[7]])
+    print(b.shape)
+    c=np.hstack((a,b))
+    print(b)
+
+#    a=np.array([[[5], [6],[7]], a])
+    print(c)
+    # n=3
+    # l = []
+    # for i in range(n): 
+    #     for j in range(n):
+    #         l.insert(1,i)
+    #         l.insert(1,j)
+    # print(l)
+    # n1, n2 = (2, 4)
+    # a = np.linspace(0, 2, n1).astype(int)
+    # print('a',a)
+    # b = np.linspace(0, 3, n2).astype(int)
+    # print('b',b)
+    # aa, bb = np.meshgrid(*a)
+    # print(aa.astype(int))
+    # print(bb.astype(int))
 
 
     # k=3
