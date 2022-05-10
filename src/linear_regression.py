@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import seaborn as sns
 from scipy.stats import skew
+from sklearn.metrics import r2_score
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 plt.style.use("ggplot")
@@ -22,39 +23,35 @@ print(table2.head())
 print(table2.dtypes)
 print(table2.info())
 
-l=table['vector'].to_list()
-l=[i.split(" ") for i in l]
-
-table2 = pd.DataFrame(l, columns=['x'+str(i) for i in range(m)])
-
-
-print(table2.head())
-exit(0)
-
-print(table2.dtypes)
-print(table2.info())
-
-d = {'col1': [[1, 2],[3, 4]]}
-
-df = pd.DataFrame(data=d)
-df2 = pd.DataFrame(df['col1'].to_list(), columns=['a','b'])
-
-print(df)
-print(df2)
-
-
 table.drop(columns=['bottom_permutation','top_permutation','permutation'], inplace=True)
+
 print(table.head())
+
+l=table['vector'].to_list()
+l=[(i.strip("[]").split(" ")) for i in l]
+l2=table['orbits']
+table2 = pd.DataFrame(l, columns=['x'+str(i) for i in range(m)])
+table2['orbits']=table['orbits']
+table2.insert(0, "leaves", table['leaves'], True)
+print(table2.head(8))
+
+
+
+#print(table.head())
 #table.info()
 
 #non lo stampa :-(
-#sns.pairplot(table,x_vars=['leaves'], y_vars='orbits', height=10, aspect=.7)
+#sns.pairplot(table2,x_vars=["leaves"], y_vars="leaves", height=10, aspect=.7)
+#sns.pairplot(table,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars='orbits', height=10, aspect=.7)
 #plt.savefig(fname='prova.jpg')
 
-X=table2[['leaves','vector']]
-y=table2.orbits
-
+X=table2.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5']]
+y=table2['orbits']
 lm1=LinearRegression()
 lm1.fit(X,y)
 print(lm1.intercept_)
 print(lm1.coef_)
+
+w=zip(['leaves','x0', 'x1','x2','x3','x4','x5'], lm1.coef_)
+list(w)
+print(w)
