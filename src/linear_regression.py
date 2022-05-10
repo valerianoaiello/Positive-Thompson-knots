@@ -1,4 +1,5 @@
 #https://stackoverflow.com/questions/35491274/split-a-pandas-column-of-lists-into-multiple-columns
+#RENDERE VARIABILE m GLOBALE, IN TUTTI I FILE
 
 from unicodedata import name
 import pandas as pd
