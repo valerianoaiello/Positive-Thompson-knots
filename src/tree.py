@@ -118,7 +118,7 @@ def number_leaves_binary(v: np.ndarray)->int:
 def number_leaves_ternary(v: np.ndarray)->int:
     z = np.nonzero(v)[0]#vector containing the indices of the non-zero components of v
     k=len(z)   
-    m=100#maximal length
+    m=1000#maximal length
     # for i in range(k):
     #     m = m + i+3*v[z[i]]
     w=np.array(list(range(m)))
@@ -141,30 +141,32 @@ def number_leaves_ternary(v: np.ndarray)->int:
 
 def generate_vectors(n: int, m: int) -> np.ndarray:
     v = list(range(m))
-    l = [v for i in range(n)]
-    print('l',l)
+    l = [range(1,n+1)] 
+    #l.insert(1,[v for i in range(n-1)])
+    # print('l',l)
+    l=[v for i in range(n)]
     w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
-    print(w.shape)
-    for i in range(m): 
-        for j in range(m):
-            if i+j != 0:
-                w=np.hstack((a,b))
-    print(w)
+  #  print(w.shape)
+    # for i in range(m): 
+    #     for j in range(m):
+    #         if i+j != 0:
+    #             w=np.hstack((a,b))
+    # print(w)
 
     return w
 
 
 if __name__ == '__main__':
-    print(generate_vectors(3,2))
-    a = np.array([[1, 1], [2, 2], [3, 3]])
-    print(a.shape)
-    b=np.array([[5], [6],[7]])
-    print(b.shape)
-    c=np.hstack((a,b))
-    print(b)
+    print(generate_vectors(5,2))
+#     a = np.array([[1, 1], [2, 2], [3, 3]])
+#     print(a.shape)
+#     b=np.array([[5], [6],[7]])
+#     print(b.shape)
+#     c=np.hstack((a,b))
+#     print(b)
 
-#    a=np.array([[[5], [6],[7]], a])
-    print(c)
+# #    a=np.array([[[5], [6],[7]], a])
+#     print(c)
     # n=3
     # l = []
     # for i in range(n): 

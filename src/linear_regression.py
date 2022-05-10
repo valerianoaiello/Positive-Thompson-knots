@@ -15,7 +15,7 @@ plt.rcParams['figure.figsize'] = (12, 8)
 table =pd.read_csv('data.csv')
 print(table.head())
 
-m=6#Make this global
+m=7#Make this global
 exponents = []
 
 table2 = pd.DataFrame(table) 
@@ -35,6 +35,7 @@ table2['orbits']=table['orbits']
 table2.insert(0, "leaves", table['leaves'], True)
 print(table2.head(8))
 
+table2.to_csv('data_bis.csv', index=False)
 
 
 #print(table.head())
@@ -45,13 +46,13 @@ print(table2.head(8))
 #sns.pairplot(table,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars='orbits', height=10, aspect=.7)
 #plt.savefig(fname='prova.jpg')
 
-X=table2.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5']]
+X=table2.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5','x6']]
 y=table2['orbits']
 lm1=LinearRegression()
 lm1.fit(X,y)
 print(lm1.intercept_)
 print(lm1.coef_)
 
-w=zip(['leaves','x0', 'x1','x2','x3','x4','x5'], lm1.coef_)
+w=zip(['leaves','x0', 'x1','x2','x3','x4','x5','x6'], lm1.coef_)
 list(w)
 print(w)
