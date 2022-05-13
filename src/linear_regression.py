@@ -13,38 +13,41 @@ from sympy import variations
 plt.style.use("ggplot")
 plt.rcParams['figure.figsize'] = (12, 8)
 
-table =pd.read_csv('data.csv')
+table =pd.read_csv('data.csv').set_index('leaves')
 print(table.head())
 
 m=7#Make this global
 exponents = []
 
-table2 = pd.DataFrame(table) 
-print(table2.head())
-print(table2.dtypes)
-print(table2.info())
+#table2 = pd.DataFrame(table) 
+# print(table2.head())
+# print(table2.dtypes)
+# print(table2.info())
 
-table.drop(columns=['bottom_permutation','top_permutation','permutation'], inplace=True)
+# table.drop(columns=['bottom_permutation','top_permutation','permutation'], inplace=True)
 
-print(table.head())
+#print(table.head())
 
-l=table['vector'].to_list()
-l=[(i.strip("[]").split(" ")) for i in l]
-l2=table['orbits']
-table2 = pd.DataFrame(l, columns=['x'+str(i) for i in range(m)])
-table2['orbits']=table['orbits']
-table2.insert(0, "leaves", table['leaves'], True)
-print(table2.head(8))
+# l=table['vector'].to_list()
+# l=[(i.strip("[]").split(" ")) for i in l]
+# l2=table['orbits']
+# table2 = pd.DataFrame(l, columns=['x'+str(i) for i in range(m)])
+# table2['orbits']=table['orbits']
+# table2.insert(0, "leaves", table['leaves'], True)
+# print(table2.head(8))
 
-table2.to_csv('data_bis.csv', index=False)
+#table2.to_csv('data_bis.csv', index=False)
 
 
 #print(table.head())
 #table.info()
 
 #non lo stampa :-(
-sns.pairplot(table2,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars="orbits", height=10, aspect=.7)
+#sns.pairplot(table) #,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars="orbits", height=10, aspect=.7)
+tablecomponents = sns.load_dataset("table")
 
+
+exit(0)
 
 #plt.show()
 #sns.pairplot(table,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars='orbits', height=10, aspect=.7)
