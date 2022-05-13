@@ -13,41 +13,46 @@ from sympy import variations
 plt.style.use("ggplot")
 plt.rcParams['figure.figsize'] = (12, 8)
 
-table =pd.read_csv('data.csv').set_index('leaves')
+table =pd.read_csv('data.csv')#.set_index('leaves')
 print(table.head())
 
 m=7#Make this global
 exponents = []
-
-#table2 = pd.DataFrame(table) 
-# print(table2.head())
-# print(table2.dtypes)
-# print(table2.info())
-
-# table.drop(columns=['bottom_permutation','top_permutation','permutation'], inplace=True)
-
-#print(table.head())
-
-# l=table['vector'].to_list()
-# l=[(i.strip("[]").split(" ")) for i in l]
-# l2=table['orbits']
-# table2 = pd.DataFrame(l, columns=['x'+str(i) for i in range(m)])
-# table2['orbits']=table['orbits']
-# table2.insert(0, "leaves", table['leaves'], True)
-# print(table2.head(8))
-
-#table2.to_csv('data_bis.csv', index=False)
-
-
-#print(table.head())
-#table.info()
-
+  
 #non lo stampa :-(
-#sns.pairplot(table) #,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars="orbits", height=10, aspect=.7)
-tablecomponents = sns.load_dataset("table")
+# 
+# 
+#X=table.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5','x6']]
+X=table.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5','x6','x7']]
+y=table['orbits']
+lm1=LinearRegression()
+lm1.fit(X,y)
+print(lm1.intercept_)
+print(lm1.coef_)
 
+vv=np.array([1, 2, 3,4,5,6,7,0])
+n=tree.number_leaves_ternary(vv)
+vector=np.array([n,1, 2, 3,4,5,6,7,0])
+#input('Insert the exponents of x0, x1 x2 x3 x4 x5 x6')
+number_pred = np.dot(lm1.coef_,vector)
+print('prediction:', number_pred)
+print('real value:', len(tree.whole_permutation(tree.number_leaves_ternary(vector),vector)))
 
 exit(0)
+
+sns.pairplot(table,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars="orbits", height=10, aspect=.7)
+plt.savefig(fname='prova.jpg')
+
+y=table['orbits']
+lm1=LinearRegression()
+lm1.fit(X,y)
+print(lm1.intercept_)
+print(lm1.coef_)
+
+#tablecomponents = sns.load_dataset("table")
+plt.plot(table[leaves], table['x0'])
+plt.savefig(fname='prova.jpg')
+
 
 #plt.show()
 #sns.pairplot(table,x_vars=['leaves', 'x0', 'x1','x2','x3','x4','x5'], y_vars='orbits', height=10, aspect=.7)
