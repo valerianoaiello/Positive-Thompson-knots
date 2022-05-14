@@ -13,5 +13,6 @@
 - cambiare funzione generate_vectors in modo tale che almeno una tra la prima e la seconda entrata sia sempre diversa da zero
 - regressione polinomiale
 - regressione logistica
+- come si fa regressione lineare quando si ha a che fare con interi?
 
 
