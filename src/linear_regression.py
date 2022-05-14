@@ -1,5 +1,6 @@
 #https://stackoverflow.com/questions/35491274/split-a-pandas-column-of-lists-into-multiple-columns
 #RENDERE VARIABILE m GLOBALE, IN TUTTI I FILE
+from constants import WIDTH_VECTOR
 import tree
 from unicodedata import name
 import pandas as pd
@@ -13,27 +14,22 @@ from sympy import variations
 plt.style.use("ggplot")
 plt.rcParams['figure.figsize'] = (12, 8)
 
-table =pd.read_csv('data.csv')#.set_index('leaves')
+table =pd.read_csv('data.csv')
 print(table.head())
 
-m=7#Make this global
+m=WIDTH_VECTOR 
 exponents = []
   
-#non lo stampa :-(
-# 
-# 
-#X=table.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5','x6']]
-X=table.loc[:,['leaves','x0', 'x1','x2','x3','x4','x5','x6','x7']]
+X=table.loc[:,['leaves', *[ 'x'+str(i) for i in range(m)]]]
 y=table['orbits']
 lm1=LinearRegression()
 lm1.fit(X,y)
 print(lm1.intercept_)
 print(lm1.coef_)
 
-vv=np.array([1, 2, 3,4,5,6,7,0])
+vv=np.array([1, 2, 3,4])
 n=tree.number_leaves_ternary(vv)
-vector=np.array([n,1, 2, 3,4,5,6,7,0])
-#input('Insert the exponents of x0, x1 x2 x3 x4 x5 x6')
+vector=np.array([n,1, 2, 3,4])
 number_pred = np.dot(lm1.coef_,vector)
 print('prediction:', number_pred)
 print('real value:', len(tree.whole_permutation(tree.number_leaves_ternary(vector),vector)))
