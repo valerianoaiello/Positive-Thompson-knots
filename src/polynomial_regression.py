@@ -238,6 +238,114 @@ print('R2: ', r2)
 sns.residplot(x=y_test, y=y_pred)
 plt.show()
 
+
+
+
+#degree=5
+#----------------------------------------------------------------------------------------#
+# Step 2: data preparation
+
+nb_degree = 5
+
+polynomial_features = PolynomialFeatures(degree = nb_degree)
+
+X_TRANSF = polynomial_features.fit_transform(X_train)
+
+#----------------------------------------------------------------------------------------#
+# Step 3: define and train a model
+
+model = LinearRegression()
+
+model.fit(X_TRANSF, y_train)
+
+
+#----------------------------------------------------------------------------------------#
+# Step 4: calculate bias and variance on train set
+
+#X_TRANSF_train = polynomial_features.fit_transform(X_train)
+
+y_pred = model.predict(X_TRANSF)
+
+rmse = np.sqrt(mean_squared_error(y_pred,y_train))
+r2 = r2_score(y_train,y_pred)
+
+print('Test on training set (degree = 5)')
+print('RMSE: ', rmse)
+print('R2: ', r2)
+
+
+#----------------------------------------------------------------------------------------#
+# Step 5: calculate bias and variance on test set
+
+X_TRANSF_test = polynomial_features.fit_transform(X_test)
+
+y_pred = model.predict(X_TRANSF_test)
+
+rmse = np.sqrt(mean_squared_error(y_test,y_pred))
+r2 = r2_score(y_test,y_pred)
+
+print('Test on test set')
+print('RMSE: ', rmse)
+print('R2: ', r2)
+
+
+sns.residplot(x=y_test, y=y_pred)
+plt.show()
+
+
+
+#degree=6
+#----------------------------------------------------------------------------------------#
+# Step 2: data preparation
+
+nb_degree = 6
+
+polynomial_features = PolynomialFeatures(degree = nb_degree)
+
+X_TRANSF = polynomial_features.fit_transform(X_train)
+
+#----------------------------------------------------------------------------------------#
+# Step 3: define and train a model
+
+model = LinearRegression()
+
+model.fit(X_TRANSF, y_train)
+
+
+#----------------------------------------------------------------------------------------#
+# Step 4: calculate bias and variance on train set
+
+#X_TRANSF_train = polynomial_features.fit_transform(X_train)
+
+y_pred = model.predict(X_TRANSF)
+
+rmse = np.sqrt(mean_squared_error(y_pred,y_train))
+r2 = r2_score(y_train,y_pred)
+
+print('Test on training set (degree = 6)')
+print('RMSE: ', rmse)
+print('R2: ', r2)
+
+
+#----------------------------------------------------------------------------------------#
+# Step 5: calculate bias and variance on test set
+
+X_TRANSF_test = polynomial_features.fit_transform(X_test)
+
+y_pred = model.predict(X_TRANSF_test)
+
+rmse = np.sqrt(mean_squared_error(y_test,y_pred))
+r2 = r2_score(y_test,y_pred)
+
+print('Test on test set')
+print('RMSE: ', rmse)
+print('R2: ', r2)
+
+
+sns.residplot(x=y_test, y=y_pred)
+plt.show()
+
+
 exit(0)
 y_pred = model.predict(X_TRANSF)
 
