@@ -139,25 +139,26 @@ def number_leaves_ternary(v: np.ndarray)->int:
          n=n+1
     return n
 
-def generate_vectors(n: int, m: int) -> np.ndarray:
-    v = list(range(m))
-    l = [range(1,n+1)] 
-    #l.insert(1,[v for i in range(n-1)])
-    # print('l',l)
-    l=[v for i in range(n)]
-    w = np.array(np.meshgrid(*l)).T.reshape(-1, n)
-  #  print(w.shape)
-    # for i in range(m): 
-    #     for j in range(m):
-    #         if i+j != 0:
-    #             w=np.hstack((a,b))
-    # print(w)
+def generate_vectors(vector_width: int, vector_height: int) -> np.ndarray:
+    v = list(range(vector_height))
+    l = [v for i in range(vector_width)]
+
+    w = np.array(np.meshgrid(*l)).T.reshape(-1, vector_width)
+    w = w[(w[:, 0] != 0) | (w[:, 1] != 0)]
 
     return w
 
+def random_generate_vectors(vector_number: int, vector_height: int, vector_width: int) -> np.ndarray:
+    vector_matrix: np.ndarray = np.random.randint(vector_height, size=(vector_number, vector_width))
+    vector_matrix = vector_matrix[(vector_matrix[:, 0] != 0) | (vector_matrix[:, 1] != 0)]
+    return vector_matrix
 
 if __name__ == '__main__':
-    print(generate_vectors(5,2))
+    # print(generate_vectors(5,2).shape)
+    A = random_generate_vectors(1000000, 10, 10)
+    # A = np.array([[1, 1], [2, 2], [3, 3]])
+    # A = A[(A[:, 1] == 1) | (A[:, 0] == 2)]
+    print(A)
 #     a = np.array([[1, 1], [2, 2], [3, 3]])
 #     print(a.shape)
 #     b=np.array([[5], [6],[7]])
