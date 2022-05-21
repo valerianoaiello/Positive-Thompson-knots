@@ -155,7 +155,8 @@ def random_generate_vectors(vector_number: int, vector_height: int, vector_width
 
 if __name__ == '__main__':
     # print(generate_vectors(5,2).shape)
-    A = random_generate_vectors(1000000, 10, 10)
+    l = [1000000, 10, 10]
+    A = random_generate_vectors(*l)
     # A = np.array([[1, 1], [2, 2], [3, 3]])
     # A = A[(A[:, 1] == 1) | (A[:, 0] == 2)]
     print(A)
