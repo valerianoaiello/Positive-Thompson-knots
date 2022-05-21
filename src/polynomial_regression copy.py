@@ -41,11 +41,11 @@ y=table['orbits']
 X_train, X_test, y_train, y_test = split_dataset_train_test(X, y, 0.3)
 
 
-#degree =1
+#degree =5
 #----------------------------------------------------------------------------------------#
 # Step 2: data preparation
 
-nb_degree = 1
+nb_degree = 4
 
 polynomial_features = PolynomialFeatures(degree = nb_degree)
 
@@ -69,7 +69,7 @@ y_pred = model.predict(X_TRANSF)
 rmse = np.sqrt(mean_squared_error(y_pred,y_train))
 r2 = r2_score(y_train,y_pred)
 
-print('Test on training set (degree = 1)')
+print('Test on training set (degree = 4)')
 print('RMSE: ', rmse)
 print('R2: ', r2)
 # print('polynomial', model)
@@ -94,7 +94,7 @@ print('R2: ', r2)
 
 
 
-#degree =2
+#degree =6
 #----------------------------------------------------------------------------------------#
 # Step 2: data preparation
 
@@ -142,6 +142,11 @@ print('RMSE: ', rmse)
 print('R2: ', r2)
 
 
+
+#sns.residplot(x=y_test, y=y_pred)
+#plt.show()
+
+exit(0)
 
 
 #degree =3
