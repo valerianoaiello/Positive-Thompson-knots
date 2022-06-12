@@ -3,20 +3,14 @@
 from typing import List
 from xmlrpc.client import Boolean
 from constants import WIDTH_VECTOR
-import tree
-from unicodedata import name
+import src.entities.tree as tree
 import pandas as pd
 import numpy as np
 import seaborn as sns
-from scipy.stats import skew
-from sklearn.metrics import r2_score, mean_squared_error
-from sklearn import linear_model
-from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn import model_selection
 import matplotlib.pyplot as plt
-from sympy import variations
 plt.style.use("ggplot")
 plt.rcParams['figure.figsize'] = (12, 8)
 

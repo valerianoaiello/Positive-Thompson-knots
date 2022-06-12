@@ -1,10 +1,8 @@
 import numpy as np
 from sympy.combinatorics import Permutation
-import time
 import csv
-import sklearn
 
-from tree import generate_vectors, random_generate_vectors, number_leaves_ternary, bottom_permutation, top_permutation, whole_permutation
+from entities.tree import generate_vectors, random_generate_vectors, number_leaves_ternary, bottom_permutation, top_permutation, whole_permutation
 from constants import (
     VECTOR_NUMBER,
     RANDOM_HEIGHT_VECTOR,

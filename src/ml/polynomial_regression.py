@@ -3,7 +3,7 @@
 from typing import List
 from xmlrpc.client import Boolean
 from constants import WIDTH_VECTOR
-import tree
+import src.entities.tree as tree
 from unicodedata import name
 import pandas as pd
 import numpy as np

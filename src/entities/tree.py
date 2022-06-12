@@ -9,11 +9,12 @@ v = (v_1, v_2, ..., v_n)
 """
 class Tree:
     def __init__(self) -> None:
+        self.vector = None
         pass
 
     """
     This function computes the permutation associated with the bottom tree of a positive Thompson element
-    n is odd number and the permutation acts on {0,1,...,n}
+    n must be an odd number and the permutation acts on {0,1,...,n}
     """
 
     def bottom_permutation(self, n: int) -> np.ndarray:
