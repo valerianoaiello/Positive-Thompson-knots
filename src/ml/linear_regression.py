@@ -1,10 +1,11 @@
 import pandas as pd
-from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
-from constants import WIDTH_VECTOR
+from src.global_constants.constants import WIDTH_VECTOR
+from src.ml.model_manager import ModelManager
 
 plt.style.use("ggplot")
 plt.rcParams['figure.figsize'] = (12, 8)
@@ -14,8 +15,9 @@ print(table.head())
 
 m=WIDTH_VECTOR 
 exponents = []
-class LinearRegression:
+class LinearRegression(ModelManager):
     def __init__(self, test_size: float, shuffle: bool=True) -> None:
+        super().__init__()
         self.model: LinearRegression = LinearRegression()
         self.intercept = None
         self.coefficients = None
@@ -35,7 +37,7 @@ class LinearRegression:
             shuffle=self.shuffle
             )
 
-    def linear_regression(self) -> None:
+    def regression(self) -> None:
         self.model.fit(self.X_train, self.y_train)
         self.intercept = self.model.intercept_
         self.coefficients = self.model.coef_

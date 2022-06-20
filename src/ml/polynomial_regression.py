@@ -2,23 +2,19 @@
 #RENDERE VARIABILE m GLOBALE, IN TUTTI I FILE
 from typing import List
 from xmlrpc.client import Boolean
-from constants import WIDTH_VECTOR
-import src.entities.tree as tree
-from unicodedata import name
+from src.global_constants.constants import WIDTH_VECTOR
 import pandas as pd
 import numpy as np
 import seaborn as sns
-from scipy.stats import skew
 from sklearn.metrics import r2_score, mean_squared_error
-from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.pipeline import make_pipeline
-from sklearn import preprocessing
+
 
 import matplotlib.pyplot as plt
-from sympy import variations
+
+from src.ml.model_manager import ModelManager
 plt.style.use("ggplot")
 plt.rcParams['figure.figsize'] = (12, 8)
 
@@ -28,12 +24,29 @@ print(table.head())
 m=WIDTH_VECTOR 
 exponents = []
 
-def split_dataset_train_test(X: pd.DataFrame, y: pd.DataFrame, test_size: float, shuffle: Boolean=True) -> List[pd.DataFrame]:
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, shuffle=shuffle)
-    return X_train, X_test, y_train, y_test
+class PolynomialRegression(ModelManager):
+    def __init__(self, degree: int, test_size: float, shuffle: bool=True):
+        super().__init__()
+        self.degree = degree
+        self.model: PolynomialFeatures = PolynomialFeatures(degree=self.degree)
+        self.X_train = None
+        self.y_train = None
+        self.X_test = None
+        self.y_test = None
+        self.y_pred = None
+        self.test_size = test_size
+        self.shuffle = shuffle
 
-def mse(y_test: pd.DataFrame, y_pred: pd.DataFrame) -> float:
-    return mean_squared_error(y_test, y_pred)
+    def split_dataset_train_test(self, X: pd.DataFrame, y: pd.DataFrame) -> None:
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+            X, 
+            y, 
+            test_size=self.test_size, 
+            shuffle=self.shuffle
+            )
+
+    def mse(self) -> float:
+        return mean_squared_error(self.y_test, self.y_pred)
 
 X=table.loc[:,['leaves', *[ 'x'+str(i) for i in range(m)]]]
 y=table['orbits']

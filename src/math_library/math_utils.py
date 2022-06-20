@@ -7,9 +7,8 @@ from sympy.combinatorics import Permutation
 v = (v_1, v_2, ..., v_n)
 0 <= v_i < m, v_i in N, for every i
 """
-class Tree:
+class MathUtils:
     def __init__(self) -> None:
-        self.vector = None
         pass
 
     """
@@ -80,8 +79,6 @@ class Tree:
         return p
 
 
-
- 
     def whole_permutation(self, n: int, v: np.ndarray) -> np.ndarray:
         p = self.top_permutation(n, v)
         q = self.bottom_permutation(n) 
@@ -114,22 +111,22 @@ class Tree:
     #this function find the number of leaves in the reduced ternary tree representing an element in F_{3,+}
     def number_leaves_ternary(self, v: np.ndarray) -> int:
         z = np.nonzero(v)[0]
-        k=len(z)   
-        m=1000
-        w=np.array(list(range(m)))
-        u=w.copy()
+        k = len(z)   
+        m = 1000
+        w = np.array(list(range(m)))
+        u = w.copy()
         for i in range(k-1,-1,-1):
             for j in range(v[z[i]]):
-                w=np.delete(w,z[i]+1)
-                w=np.delete(w,z[i]+1)
-        n=0
+                w = np.delete(w,z[i]+1)
+                w = np.delete(w,z[i]+1)
+        n = 0
         for i in range(len(w)-1):
-            if w[i+1]-w[i]>=2:
-                n=w[i+1]
-        if n%2==1:
-            n=n+2
+            if w[i + 1] - w[i] >= 2:
+                n = w[i + 1]
+        if n%2 == 1:
+            n = n + 2
         else:
-            n=n+1
+            n = n + 1
         return n
 
     def generate_vectors(self, vector_width: int, vector_height: int) -> np.ndarray:

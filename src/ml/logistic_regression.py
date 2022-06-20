@@ -2,8 +2,8 @@
  
 from typing import List
 from xmlrpc.client import Boolean
-from constants import WIDTH_VECTOR
-import src.entities.tree as tree
+from src.global_constants.constants import WIDTH_VECTOR
+import src.math_library.math_utils as math_utils
 import pandas as pd
 import numpy as np
 import seaborn as sns
