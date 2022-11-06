@@ -7,15 +7,15 @@ import matplotlib.pyplot as plt
 from src.global_constants.constants import WIDTH_VECTOR
 from src.ml.model_manager import ModelManager
 
-plt.style.use("ggplot")
-plt.rcParams['figure.figsize'] = (12, 8)
+# plt.style.use("ggplot")
+# plt.rcParams['figure.figsize'] = (12, 8)
 
-table =pd.read_csv('data.csv')
-print(table.head())
+# table =pd.read_csv('data.csv')
+# print(table.head())
 
-m=WIDTH_VECTOR 
-exponents = []
-class LinearRegression(ModelManager):
+# m=WIDTH_VECTOR 
+# exponents = []
+class LinearRegressionModel(ModelManager):
     def __init__(self, test_size: float, shuffle: bool=True) -> None:
         super().__init__()
         self.model: LinearRegression = LinearRegression()
@@ -46,5 +46,9 @@ class LinearRegression(ModelManager):
     def mse(self) -> float:
         return mean_squared_error(self.y_test, self.y_pred)
 
-X=table.loc[:,['leaves', *[ 'x'+str(i) for i in range(m)]]]
-y=table['orbits']
+# X=table.loc[:,['leaves', *[ 'x'+str(i) for i in range(m)]]]
+# y=table['orbits']
+
+if __name__ == '__main__':
+    lr = LinearRegressionModel(test_size=0.1)
+    lr.split_dataset_train_test(X, y)
