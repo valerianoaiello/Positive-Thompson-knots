@@ -1,9 +1,6 @@
 import numpy as np
-
 from sympy.combinatorics import Permutation
 
-# Go to https://docs.sympy.org/latest/modules/combinatorics/permutations.html
-# for more information on Permutation
 """
 v = (v_1, v_2, ..., v_n)
 0 <= v_i < m, v_i in N, for every i
@@ -14,12 +11,11 @@ class MathUtils:
     def __init__(self) -> None:
         pass
 
-    """
-    This function computes the permutation associated with the bottom tree of a positive Thompson element
-    n must be an odd number and the permutation acts on {0,1,...,n}
-    """
-
     def bottom_permutation(self, n: int) -> np.ndarray:
+        """
+        This function computes the permutation associated with the bottom tree of a positive Thompson element
+        n must be an odd number and the permutation acts on {0,1,...,n}
+        """
         if n % 2 == 0:
             print('The number is even')
             exit(0)
@@ -29,19 +25,19 @@ class MathUtils:
             p = Permutation(0, 2)(1, 3)
         else:
             q = Permutation(0, 2)
-            m = int((n-3)/2)
+            m = int((n - 3)/2)
             for i in range(m):
-                q = Permutation(q(2*i+1, 2*i+4))
-            p = Permutation(q(n-2, n))
+                q = Permutation(q(2*i + 1, 2*i + 4))
+            p = Permutation(q(n - 2, n))
 
         return np.array(p.array_form)
 
-    """
-    This function computes the permutation associated with the top tree of a positive Thompson element
-    n is odd number and the permutation acts on {0,1,...,n}
-    """
-
     def top_permutation(self, n: int, v: np.ndarray) -> np.ndarray:
+        """
+        This function computes the permutation associated with the top tree of a positive Thompson element.
+        Arg:
+        - n is odd number and the permutation acts on {0,1,...,n}
+        """
         if n % 2 == 0:
             print('The number is even')
             exit(0)
