@@ -2,7 +2,8 @@ import numpy as np
 from sympy.combinatorics import Permutation
 import csv
 
-from src.math_library.math_utils import MathUtils
+from src.math_library.monoid_generator import MonoidGenerator
+import src.math_library.math_utils as math_utils
 from src.global_constants.constants import (
     VECTOR_NUMBER,
     RANDOM_HEIGHT_VECTOR,
@@ -11,7 +12,6 @@ from src.global_constants.constants import (
     WIDTH_VECTOR
 )
 
-math_utils = MathUtils()
 a = WIDTH_VECTOR #number components in basis vectors
 b = HEIGHT_VECTOR
 
@@ -19,14 +19,14 @@ c = RANDOM_WIDTH_VECTOR
 d = RANDOM_HEIGHT_VECTOR
 e = VECTOR_NUMBER
 
-generate_vectors_parameters = [a, b]
-random_generate_vectors_parameters = [e, d, c]
+generate_vectors_parameters = []
+random_generate_vectors_parameters = [e]
 
 widths = [a, c]
 
 function_parameters = [generate_vectors_parameters, random_generate_vectors_parameters]
 names_list = ['data.csv', 'random_data.csv']
-functions_list = [math_utils.generate_vectors, math_utils.random_generate_vectors]
+functions_list = [MonoidGenerator(b, a).generate_monoid_elements, MonoidGenerator(d, c).random_generate_monoid_elements]
 
 for j in range(2):
     A = functions_list[j](*function_parameters[j])
@@ -44,9 +44,9 @@ for j in range(2):
         for i in range(len(A)):
             v = np.array(A[i][:])
             v = np.insert(v, 0, 1, axis=0)
-            n = math_utils.number_leaves_ternary(v)
-            q = Permutation(math_utils.bottom_permutation(n))
-            p = Permutation(math_utils.top_permutation(n, v))
+            n = math_utils.number_of_leaves(v)
+            q = Permutation(math_utils.__bottom_permutation(n))
+            p = Permutation(math_utils.__top_permutation(n, v))
             r = math_utils.whole_permutation(n, v)
             writer.writerow([n] + [v[i] for i in range(a)] +[q, p, r, len(r)])
 
