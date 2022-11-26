@@ -13,13 +13,18 @@ Every element positive element of $F_3$ can be written as $x_0^{a_0}\cdots x_n^{
 and $a_n\in \mathbb{N}$. We call $n$ the width and $\max_{i}a_i$ the height of the element.
 
 ## Jones construction of knots
-In 2014 Vaughan Jones defined a method to construct link from elements of the Thompson group $F$, which was later extended to the Brown-Thompson group $F_3$. Both $F$ and $F_3$ are just as a good as the braid groups at producing links. More precisely, for every link $L$ there exists an element $g$ such that its closure $\mathcal{L}(g)$ is equivalent to $L$.
+In 2014 Vaughan Jones defined a method to construct link from elements of the Thompson group $F$, which was later extended to the Brown-Thompson group $F_3$, [Jo14, Jo18]. Both $F$ and $F_3$ are just as a good as the braid groups at producing links. More precisely, for every link $L$ there exists an element $g$ such that its closure $\mathcal{L}(g)$ is equivalent to $L$.
 
 ## Thompson Permutations
 It is possible to associate permutations to braids in a natural way, where the number of orbits (or cycles in the cycle decomposition) of the permutation is equal to the number of connected components of the link.
 We define a method to associate a permutation $\mathcal{P}(g)$ to each element $g$ of the Brown-Thompson group in such a way that its number of orbits coincides with the number of connected components of $\mathcal{L}(g)$. We call $\mathcal{P}(g)$ the Thompson permutation associated with $g$.
 
-In this project we present a function, called "whole_permutation" that produces $\mathcal{P}(g)$ for positives element. It receives a numpy vector $v=(a_0,a_1, ..., a_n)$ as an input and returns a permutations as a list.
+In this project we present a function, called "whole_permutation" that produces $\mathcal{P}(g)$ for positives element. It receives a numpy vector $v=(a_0,a_1, ..., a_n)$ as an input and returns a permutations as a list (the elements of the list are the distict cycles of the permutation).
+
+We explored the permutations of elements with selected values of width and height. The results are stored in csv files.
 
 
+## Bibliography
+[Jo14] V.F.R. Jones, Some unitary representations of Thompson's groups $F$ and $T$. J. Comb. Algebra {\bf 1} (2017), 1-44.
 
+[Jo18] V.F.R. Jones, On the construction of knots and links from Thompson's groups.  In: Adams C. et al. (eds) Knots, Low-Dimensional Topology and Applications. KNOTS16 2016. Springer Proceedings in Mathematics \& Statistics, vol 284. Springer, Cham.
