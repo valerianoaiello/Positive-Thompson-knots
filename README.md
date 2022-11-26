@@ -24,7 +24,17 @@ In 2014 Vaughan Jones defined a method to construct link from elements of the Th
 It is possible to associate permutations to braids in a natural way, where the number of orbits (or cycles in the cycle decomposition) of the permutation is equal to the number of connected components of the link.
 We define a method to associate a permutation $\mathcal{P}(g)$ to each element $g$ of the Brown-Thompson group in such a way that its number of orbits coincides with the number of connected components of $\mathcal{L}(g)$. We call $\mathcal{P}(g)$ the Thompson permutation associated with $g$.
 
-In this project we present a function, called "whole_permutation" that produces $\mathcal{P}(g)$ for positives elements. It receives 
+## Code
+The main files are monoid_elements_generator.py and positive_bt_permutations.py.
+
+### monoid_elements_generator.py
+Consider two positive integers $h$ and $w$. 
+In this file we introduce a class called MonoidElementsGenerator, which contains two methods: generate_monoid_elements and random_generate_monoid_elements.
+The former produces all positive elements in $F_3$ with height at most $h$ and width at most $w$.
+The latter takes a positive integer $n$ as an argument and produces $n$ positive elements with height at most $h$ and width at most $w$.
+
+### positive_bt_permutations.py
+In this file we present a function, called "whole_permutation" that produces $\mathcal{P}(g)$ for positives elements. It receives 
 a natural number $k$ and a numpy vector $v=(a_0,a_1, ..., a_n)$ as an input and returns a permutations as a list (the elements of the list are the distict cycles of the permutation). The number $k$ is the number of leaves in the minimal representative in terms of ternary tree diagrams, while $v$ represents
 the exponents that appear in the description the element as  $x_0^{a_0}\cdots x_n^{a_n}$.
 
