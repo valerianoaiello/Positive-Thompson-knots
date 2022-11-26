@@ -14,6 +14,9 @@ The elements of these monoids are called positive.
 Every element positive element of $F_3$ can be written uniquely as $x_0^{a_0}\cdots x_n^{a_n}$ for some $n$, $a_0$, ..., $a_{n-1}$ in $\mathbb{N} \cup \{0\}$ and 
 and $a_n\in \mathbb{N}$. We call $n$ the width and $\max_{i}a_i$ the height of the element.
 
+There is a natural injection of $F$ into $F_3$ which is obtained by mapping $y_i$ to $x_{2i}$ for all $i$.
+Correspongly, we have an injection of $F_+$ into $F_{3,+}$.
+
 ## Jones construction of knots
 In 2014 Vaughan Jones defined a method to construct link from elements of the Thompson group $F$, which was later extended to the Brown-Thompson group $F_3$, [Jo14, Jo18]. Both $F$ and $F_3$ are just as a good as the braid groups at producing links. More precisely, for every link $L$ there exists an element $g$ such that its closure $\mathcal{L}(g)$ is equivalent to $L$.
 
@@ -25,10 +28,11 @@ In this project we present a function, called "whole_permutation" that produces 
 a natural number $k$ and a numpy vector $v=(a_0,a_1, ..., a_n)$ as an input and returns a permutations as a list (the elements of the list are the distict cycles of the permutation). The number $k$ is the number of leaves in the minimal representative in terms of ternary tree diagrams, while $v$ represents
 the exponents that appear in the description the element as  $x_0^{a_0}\cdots x_n^{a_n}$.
 
-We explored the permutations of elements with selected values of width and height. The results are stored in csv files.
+We explored the permutations of elements with selected values of width and height. The results are stored in csv files and presented in [AiIo].
 
 
 ## Bibliography
+[AiIo] V. Aiello, S. Iovieno, A computational study of the number of connected components of positive Thompson links.
 
 [B] J. Belk, Thompson's group F. Ph.D. Thesis (Cornell University).  preprint arXiv:0708.3609 (2007).
 
