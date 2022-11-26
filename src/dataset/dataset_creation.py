@@ -2,7 +2,7 @@ import numpy as np
 from sympy.combinatorics import Permutation
 import csv
 
-from src.math_library.monoid_elements_generator import MonoidGenerator
+from src.math_library.monoid_elements_generator import MonoidElementsGenerator
 import src.math_library.positive_bt_permutations as positive_bt_permutations
 from src.global_constants.constants import (
     VECTOR_NUMBER,
@@ -26,7 +26,7 @@ widths = [a, c]
 
 function_parameters = [generate_vectors_parameters, random_generate_vectors_parameters]
 names_list = ['data.csv', 'random_data.csv']
-functions_list = [MonoidGenerator(b, a).generate_monoid_elements, MonoidGenerator(d, c).random_generate_monoid_elements]
+functions_list = [MonoidElementsGenerator(b, a).generate_monoid_elements, MonoidElementsGenerator(d, c).random_generate_monoid_elements]
 
 for j in range(2):
     A = functions_list[j](*function_parameters[j])

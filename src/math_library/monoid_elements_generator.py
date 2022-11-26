@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class MonoidElementGenerator:
+class MonoidElementsGenerator:
     def __init__(self, height: int, width: int) -> None:
         self.height = height
         self.width = width
@@ -23,4 +23,4 @@ class MonoidElementGenerator:
 
 
 if __name__ == '__main__':
-    print(MonoidElementGenerator(height=5, width=10).generate_monoid_elements())
+    print(MonoidElementsGenerator(height=5, width=10).generate_monoid_elements())
