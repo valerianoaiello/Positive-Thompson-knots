@@ -2,8 +2,8 @@ import numpy as np
 from sympy.combinatorics import Permutation
 import csv
 
-from src.math_library.monoid_generator import MonoidGenerator
-import src.math_library.math_utils as math_utils
+from src.math_library.monoid_elements_generator import MonoidGenerator
+import src.math_library.positive_bt_permutations as positive_bt_permutations
 from src.global_constants.constants import (
     VECTOR_NUMBER,
     RANDOM_HEIGHT_VECTOR,
@@ -44,10 +44,10 @@ for j in range(2):
         for i in range(len(A)):
             v = np.array(A[i][:])
             v = np.insert(v, 0, 1, axis=0)
-            n = math_utils.number_of_leaves(v)
-            q = Permutation(math_utils.__bottom_permutation(n))
-            p = Permutation(math_utils.__top_permutation(n, v))
-            r = math_utils.whole_permutation(n, v)
+            n = positive_bt_permutations.number_of_leaves(v)
+            q = Permutation(positive_bt_permutations.bottom_permutation(n))
+            p = Permutation(positive_bt_permutations.top_permutation(n, v))
+            r = positive_bt_permutations.whole_permutation(n, v)
             writer.writerow([n] + [v[i] for i in range(a)] +[q, p, r, len(r)])
 
 
