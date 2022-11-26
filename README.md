@@ -25,6 +25,6 @@ We explored the permutations of elements with selected values of width and heigh
 
 
 ## Bibliography
-[Jo14] V.F.R. Jones, Some unitary representations of Thompson's groups $F$ and $T$. J. Comb. Algebra {\bf 1} (2017), 1-44.
+[Jo14] V.F.R. Jones, Some unitary representations of Thompson's groups $F$ and $T$. J. Comb. Algebra 1 (2017), 1-44.
 
 [Jo18] V.F.R. Jones, On the construction of knots and links from Thompson's groups.  In: Adams C. et al. (eds) Knots, Low-Dimensional Topology and Applications. KNOTS16 2016. Springer Proceedings in Mathematics \& Statistics, vol 284. Springer, Cham.
