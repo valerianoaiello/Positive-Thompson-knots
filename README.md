@@ -31,7 +31,7 @@ The main files are monoid_elements_generator.py and positive_bt_permutations.py.
 Consider two positive integers $h$ and $w$. 
 In this file we introduce a class called MonoidElementsGenerator, which contains two methods: generate_monoid_elements and random_generate_monoid_elements.
 The former produces all positive elements in $F_3$ with height at most $h$ and width at most $w$.
-The latter takes a positive integer $n$ as an argument and produces $n$ positive elements with height at most $h$ and width at most $w$.
+The latter takes a positive integer $n$ as an argument and produces $n$ random positive elements with height at most $h$ and width at most $w$.
 
 ### positive_bt_permutations.py
 In this file we present a function, called "whole_permutation" that produces $\mathcal{P}(g)$ for positives elements. It receives 
