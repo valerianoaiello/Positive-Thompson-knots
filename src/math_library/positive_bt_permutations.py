@@ -128,14 +128,16 @@ def number_of_leaves(monoid_element: np.ndarray, max_dimension=1000) -> int:
     The positive element is written as x_0^{a_0}\cdots x_n^{a_n} for some n, a_0, ..., a_{n-1} (non-negative integers) and a_n (positive integer).
     We have to consider all the non-negative integers 0, 1, 2, 3, 4, ...
     We place carets above non-negative integers for each element appearing in the above expression, starting from the right, that is with x_n.
-    We put a ternary caret above the integers n, n+1 and n+2. 
-    Now we re-number all the non-negative integers and the n-th point is the root of the caret that we just place, while n+3 is now n+1, n+2 is n+1,
-    and so on. Equivalently, we erase the integers n+1, n+2.
+    We put a ternary caret above the integers n+1, n+2 and n+3 (note the indices are shifted by 1, "traditionally" the caret would be above n, n+1, n+2 
+    but for convenience we made this small change). 
+    Now we re-number all the non-negative integers and the (n+1)-th point is the root of the caret that we just placed, 
+    while n+4 is now n+2, n+5 is n+3, and so on. 
     We continue with the other elements in x_0^{a_0}\cdots x_n^{a_n-1} (again starting from the right) until we finish.
     In this function we cannot store all the non-negative integers, so we create a vector called "integer_interval" with all integers 
-    from 0 to max_dimension.
-    For each term in x_0^{a_0}\cdots x_n^{a_n} we remove two entries in this vector. For example, x_n is responsible for removing n+1 and n+2.
-    Checking where there are "holes" in "integer_interval" will tell us the number of leaves. 
+    from 0 to max_dimension and for each element in x_0^{a_0}\cdots x_n^{a_n} we remove 2 entries. For example, for x_n 
+    we remove the (n+2)-th and (n+3)-th entries. Then if x_k appears in x_0^{a_0}\cdots x_n^{a_n-1} as rightmost element, 
+    we remove the (k+2) and (k+3)-th entries of the new vector and continue in the same way.
+    Checking where the "holes" in "integer_interval" are will tell us the number of leaves. 
     
     References:
     [B] J. Belk, Thompson's group F. Ph.D. Thesis (Cornell University).  preprint arXiv:0708.3609 (2007).
