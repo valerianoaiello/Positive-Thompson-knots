@@ -2,7 +2,7 @@ import numpy as np
 
 """
 An element of F_{3,+} can be written uniquely as x_0^{a_0}\cdots x_n^{a_n} for some n, a_0, ..., a_{n-1} in N \cup {0} and 
-and a_n in N, which we represent it as vector v=(a_0,a_1, ..., a_n).
+a_n in N, which we represent it as vector v=(a_0,a_1, ..., a_n).
 The method generate_monoid_elements returns all the vectors in R^width whose components are between 0 and height.
 The idea is the following: we first create a vector called admissible_exponents with entries from 0, to height in ascending order.
 Then we create a matrix "repeated_admissible_exponents" in M_{height + 1, width}(Z), whose columns are all equal to "admissible_exponents".
