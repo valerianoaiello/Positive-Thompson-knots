@@ -1,6 +1,6 @@
+import csv
 import numpy as np
 from sympy.combinatorics import Permutation
-import csv
 
 from src.math_library.monoid_elements_generator import MonoidElementsGenerator
 import src.math_library.positive_bt_permutations as positive_bt_permutations
@@ -10,7 +10,8 @@ WIDTH = 3
 
 csv_name = 'data.csv'
 
-monoid_elements = MonoidElementsGenerator(HEIGHT, WIDTH).generate_monoid_elements()
+monoid_elements = MonoidElementsGenerator(
+    HEIGHT, WIDTH).generate_monoid_elements()
 
 with open(csv_name, 'w') as f:
     writer = csv.writer(f)
