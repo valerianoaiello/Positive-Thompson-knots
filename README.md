@@ -26,6 +26,7 @@ Here we exemplify the procedure
 <p align="center">
   <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/knots.png" />
 </p>
+See [A2] for a survey on this area.
 
 ## Thompson Permutations
 It is possible to associate permutations to braids in a natural way, where the number of orbits (or cycles in the cycle decomposition) of the permutation is equal to the number of connected components of the link.
@@ -49,6 +50,8 @@ We explored the permutations of elements with selected values of width and heigh
 
 
 ## Bibliography
+[A2] V. Aiello, An introduction to Thompson knot theory and to Jones subgroups. accepted for publication in J. of Knot Theory and its Ramifications (2022).
+
 [AiIo] V. Aiello, S. Iovieno, A computational study of the number of connected components of positive Thompson links.
 
 [B] J. Belk, Thompson's group F. Ph.D. Thesis (Cornell University).  preprint arXiv:0708.3609 (2007).
