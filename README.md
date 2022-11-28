@@ -22,7 +22,7 @@ Correspongly, we have an injection of $F_+$ into $F_{3,+}$.
 
 ## Jones construction of knots
 In 2014 Vaughan Jones defined a method to construct link from elements of the Thompson group $F$, which was later extended to the Brown-Thompson group $F_3$, [Jo14, Jo18]. Both $F$ and $F_3$ are just as a good as the braid groups at producing links. More precisely, for every link $L$ there exists an element $g$ such that its closure $\mathcal{L}(g)$ is equivalent to $L$.
-
+Here we exemplify the procedure
 <p align="center">
   <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/knots.png" />
 </p>
