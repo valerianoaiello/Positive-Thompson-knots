@@ -4,11 +4,11 @@ from sympy.combinatorics import Permutation
 Given an element g in F_{3,+} we associate a permutation to it.
 The element is first described in its unique normal form as x_0^{a_0}\cdots x_n^{a_n} for some n (a natural number), 
 a_0, ..., a_{n-1} (non-negative integers), a_n (positive integer).
-The we consider the minimal ternary tree diagram representing it (this is given by a pair of ternary trees (T_+,T_-) with the same number of leaves).
+Then we consider the minimal ternary tree diagram representing it (this is given by a pair of ternary trees (T_+,T_-) with the same number of leaves).
 The function "number_of_leaves" returns the number n of leaves of the trees in this minimal ternary tree diagram. 
 The permutationo P(g) is going to act on {0, 1, 2, ..., n}.
 First we construct two permutations on {0, 1, 2, ..., n}: the bottom permutation associated with T_- and the top permutation associated with T_+.
-The former is produced by the function "bottom_permutation". Since the bottom tree of a positive element has always the same shape, the function takes only
+The former is produced by the function "bottom_permutation". Since the bottom tree of a positive element has always the same shape, this function takes only
 one argument: the number of leaves.
 The latter permutation is produced by the function "top_permutation" which takes two arguments: the number of leaves and the normal form of the 
 element which is described by a vector v=(a_0,a_1, ..., a_n). 
@@ -18,9 +18,10 @@ the number of leaves and the normal form of the element which is described by a 
 
 def bottom_permutation(number_of_leaves: int) -> np.ndarray:
     """
-    This function computes the permutation associated with the bottom (ternary) tree of a positive Thompson element
-    n must be an odd number and the permutation acts on {0,1,...,n}.
-    We only need an argument in this function because a positive element has always the same shape.
+    This function computes the permutation associated with the bottom ternary tree of a positive Thompson element
+    The inputs is a natural number number_of_leaves which is odd a number.
+    We only need an argument in this function because the bottom tree of a positive element has always the same shape.
+    The output of this function is a permutation acting on {0,1,...,number_of_leaves}.
     """
     if number_of_leaves % 2 == 0:
         print('The number is even')
@@ -42,10 +43,13 @@ def bottom_permutation(number_of_leaves: int) -> np.ndarray:
 
 
 def top_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.ndarray:
-    """
+    """    
     This function computes the permutation associated with the (ternary) top tree of a positive Thompson element.
-    n is odd number and the permutation acts on {0,1,...,n}.
-    The monoid element is represented as vector v=(a_0,a_1, ..., a_n).
+    The inputs are monoid_element=(a_0,a_1, ..., a_k), a vector whose entries are non-negative,
+    and a natural number number_of_leaves which is odd a number.
+    The output of this function is a permutation acting on {0,1,...,number_of_leaves}.
+    The monoid_element=(a_0,a_1, ..., a_k) represents the monoid element.
+    a_0, ..., a_k are the exponents in its normal form.
     """
     if number_of_leaves % 2 == 0:
         print('The number is even')
@@ -93,8 +97,11 @@ def top_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.nda
 def whole_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.ndarray:
     """
     This function computes the Thompson permutation associated with the ternary tree diagram of a positive Thompson element.
-    n is odd number and the permutation acts on {0,1,...,n}.
-    The monoid element g is represented as vector v=(a_0,a_1, ..., a_n).
+    The inputs are monoid_element=(a_0,a_1, ..., a_k), a vector whose entries are non-negative,
+    and a natural number number_of_leaves which is odd a number.
+    The output of this function is a permutation acting on {0,1,...,number_of_leaves}.
+    The monoid_element=(a_0,a_1, ..., a_k) represents the monoid element.
+    a_0, ..., a_k are the exponents in its normal form.
     In this function we use the functions "top_permutation" and "bottom_permutation" to produce a pair of permutations: one for the 
     top tree and one for bottom tree, of the ternary tree diagram representing g.
     """
@@ -123,8 +130,8 @@ def whole_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.n
 
 def number_of_leaves(monoid_element: np.ndarray, max_dimension=1000) -> int:
     """
-    This function find the number of leaves in the reduced ternary tree representing an element in F_{3,+}.
-    We use the "One-Way Forest Diagrams", [B]. 
+    This function finds the number of leaves in the reduced ternary tree representing an element in F_{3,+}.
+    We use the "One-Way Forest Diagrams" description of F_3, in the spirit of [B]. 
     The positive element is written as x_0^{a_0}\cdots x_n^{a_n} for some n, a_0, ..., a_{n-1} (non-negative integers) and a_n (positive integer).
     We have to consider all the non-negative integers 0, 1, 2, 3, 4, ...
     We place carets above non-negative integers for each element appearing in the above expression, starting from the right, that is with x_n.
