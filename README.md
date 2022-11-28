@@ -2,8 +2,12 @@
 
 ## The Thompson group $F$ and the Brown-Thompson group $F_3$
 The Thompson group $F$ and the Brown-Thompson group $F_3$ admit infinite presentations, namely 
+<p align="center">
 $\langle y_0, y_1, ...| y_n y_l = y_l y_{n+1}$ for all $l < n\rangle$ and
-$\langle x_0, x_1, ...| x_n x_l = x_l x_{n+2}$ for all $l < n\rangle$, respectively [CFP, B, Brown].
+$\langle x_0, x_1, ...| x_n x_l = x_l x_{n+2}$ for all $l < n\rangle$
+</p>
+respectively [CFP, B, Brown].
+
 Every element of $F_3$ can be represented by pairs of ternary trees with the same number of leaves and such pairs are called ternary tree diagrams. 
 The representation is non-unique, but there exists a unique minimal representive, that is with minimal number of leaves.
 
