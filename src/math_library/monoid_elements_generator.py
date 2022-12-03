@@ -29,7 +29,3 @@ class MonoidElementsGenerator:
             self.height + 1, size=(number_of_elements, self.width))
 
         return elements_matrix
-
-
-if __name__ == '__main__':
-    print(MonoidElementsGenerator(height=5, width=10).generate_monoid_elements())
