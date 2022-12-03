@@ -17,7 +17,7 @@ class MonoidElementsGenerator:
         self.width = width
 
     def generate_monoid_elements(self) -> np.ndarray:
-        admissible_exponents = list(range(self.height))
+        admissible_exponents = list(range(self.height + 1))
 
         repeated_admissible_exponents = [admissible_exponents]*self.width
 
@@ -27,7 +27,7 @@ class MonoidElementsGenerator:
 
     def random_generate_monoid_elements(self, number_of_elements: int) -> np.ndarray:
         elements_matrix: np.ndarray = np.random.randint(
-            self.height, size=(number_of_elements, self.width))
+            self.height + 1, size=(number_of_elements, self.width))
 
         return elements_matrix
 
