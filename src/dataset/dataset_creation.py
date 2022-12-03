@@ -6,16 +6,8 @@ from src.math_library.monoid_elements_generator import MonoidElementsGenerator
 import src.math_library.positive_bt_permutations as positive_bt_permutations
 
 
-HEIGHT = 2
-WIDTH = 3
-
-csv_path = 'data.csv'
-
-monoid_elements = MonoidElementsGenerator(
-    HEIGHT, WIDTH).generate_monoid_elements()
-
-
-def create_dataset(monoid_elements: np.ndarray, width: int, csv_path: str):
+def create_dataset(monoid_elements: np.ndarray, csv_path: str):
+    _, width = monoid_elements.shape
     with open(csv_path, 'w') as f:
         writer = csv.writer(f)
         writer.writerow([
@@ -46,12 +38,12 @@ def create_dataset(monoid_elements: np.ndarray, width: int, csv_path: str):
 
 
 if __name__ == '__main__':
-    csv_path = 'data.csv'
-
-    HEIGHT = 3
-    WIDTH = 3
+    HEIGHT = 2
+    WIDTH = 2
+    
+    csv_path = 'data_w' + str(WIDTH) + 'h' + str(HEIGHT) + '.csv'
 
     monoid_elements = MonoidElementsGenerator(
         HEIGHT, WIDTH).generate_monoid_elements()
 
-    create_dataset(monoid_elements, WIDTH, csv_path)
+    create_dataset(monoid_elements, csv_path)
