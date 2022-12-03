@@ -114,15 +114,16 @@ def whole_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.n
     whole_permutation_ = []
 
     for i in range(number_of_leaves):
+        k = i
         whole_permutation_cycle: list = []
-        if i not in [integer_ for cycle in whole_permutation_ for integer_ in cycle]:
+        if k not in [integer_ for cycle in whole_permutation_ for integer_ in cycle]:
             while True:
-                if top_permutation_[i] not in whole_permutation_cycle:
-                    whole_permutation_cycle.append(top_permutation_[i])
-                    i = top_permutation_[i]
-                    if bottom_permutation_[i] not in whole_permutation_cycle:
-                        whole_permutation_cycle.append(bottom_permutation_[i])
-                        i = bottom_permutation_[i]
+                if top_permutation_[k] not in whole_permutation_cycle:
+                    whole_permutation_cycle.append(top_permutation_[k])
+                    k = top_permutation_[k]
+                    if bottom_permutation_[k] not in whole_permutation_cycle:
+                        whole_permutation_cycle.append(bottom_permutation_[k])
+                        k = bottom_permutation_[k]
                     else:
                         break
                 else:
