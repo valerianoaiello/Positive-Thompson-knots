@@ -5,7 +5,11 @@ from sympy.combinatorics import Permutation
 from src.math_library.monoid_elements_generator import MonoidElementsGenerator
 import src.math_library.positive_bt_permutations as positive_bt_permutations
 
-
+"""
+With this function we create the dataset.
+The function create_dataset takes two inputs: a numpy array (containing all the vectors representing the positive elements that we will put 
+dataset) and a string (containing the path of the csv to be created).
+"""
 def create_dataset(monoid_elements: np.ndarray, csv_path: str):
     _, width = monoid_elements.shape
     with open(csv_path, 'w') as f:
