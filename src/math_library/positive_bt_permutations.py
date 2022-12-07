@@ -20,7 +20,7 @@ the number of leaves and the normal form of the element which is described by a 
 
 def bottom_permutation(number_of_leaves: int) -> np.ndarray:
     """
-    This function computes the permutation associated with the bottom ternary tree of a positive Thompson element
+    This function computes the permutation associated with the bottom ternary tree of a positive Brown-Thompson element
     The inputs is a natural number, number_of_leaves, which is an odd number.
     We only need an argument in this function because the bottom tree of a positive element has always the same shape.
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
@@ -46,7 +46,7 @@ def bottom_permutation(number_of_leaves: int) -> np.ndarray:
 
 def top_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.ndarray:
     """    
-    This function computes the permutation associated with the (ternary) top tree of a positive Thompson element.
+    This function computes the permutation associated with the (ternary) top tree of a positive Brown-Thompson element.
     The inputs are monoid_element = (a_0, a_1, ..., a_m), a vector whose entries are non-negative,
     and a natural number, number_of_leaves, which is an odd number.
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
@@ -98,7 +98,7 @@ def top_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.nda
 
 def whole_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.ndarray:
     """
-    This function computes the Thompson permutation associated with the ternary tree diagram of a positive Thompson element g.
+    This function computes the Thompson permutation associated with the ternary tree diagram of a positive Brown-Thompson element g.
     The inputs are monoid_element = (a_0, a_1, ..., a_m), a vector whose entries are non-negative,
     and a natural number, number_of_leaves, which is an odd number.
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
