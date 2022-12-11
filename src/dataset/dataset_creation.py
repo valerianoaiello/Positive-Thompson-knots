@@ -40,7 +40,18 @@ def create_dataset(monoid_elements: np.ndarray, csv_path: str):
                     whole_permutation, len(whole_permutation)]
             )
 
+"""
+This function takes the whole data set "data_final.csv" and produces a dataset of smaller height and width.
+csv_path is the location of the file "data_final.csv" in the computer.
+"""
+def reduce_data_set(width: int, height: int, csv_path: str):
+  df = pd.read_csv(csv_path)
+  df = df[df.apply(lambda row: all(column <= height for column in row[2:width+2]), axis=1)]
+  df = df[df.apply(lambda row: all(column == 0 for column in row[width+2:9]), axis=1)]
+  return df
+            
 
+            
 if __name__ == '__main__':
     HEIGHT = 2
     WIDTH = 2
