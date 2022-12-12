@@ -32,6 +32,18 @@ See [A2] for a survey on this area.
 It is possible to associate permutations to braids in a natural way, where the number of orbits (or cycles in the cycle decomposition) of the permutation is equal to the number of connected components of the link.
 We define a method to associate a permutation $\mathcal{P}(g)$ to each element $g$ of the Brown-Thompson group in such a way that its number of orbits coincides with the number of connected components of $\mathcal{L}(g)$. We call $\mathcal{P}(g)$ the Thompson permutation associated with $g$.
 
+These permutations are constructed in the following way.
+First, given an element of $F_3$ we draw $\mathcal{L}(g)$, then we draw the $x$-axis and number the interesection points. 
+The number of these points coincides with that of the leaves of $g$.
+Denote these points by ${1, ..., n}$.
+Now for each component, we orient upward the strand passing through its leftmost intersection point with the $x$-axis.
+This gives an orientation to the whole link.
+For each $i$ in ${1, ..., n}$, we decree that the Thompson permutation $\mathcal{P}(g)$ maps $i$ to the next integer met in $\mathcal{L}(g)$ moving along the given direction.
+
+<p align="center">
+  <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/thompson_permutation.png" width="700" height="200"/>
+</p>
+
 ## Code
 The main files are monoid_elements_generator.py and positive_bt_permutations.py.
 
