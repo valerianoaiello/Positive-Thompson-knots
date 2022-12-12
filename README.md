@@ -33,7 +33,7 @@ It is possible to associate permutations to braids in a natural way, where the n
 We define a method to associate a permutation $\mathcal{P}(g)$ to each element $g$ of the Brown-Thompson group in such a way that its number of orbits coincides with the number of connected components of $\mathcal{L}(g)$. We call $\mathcal{P}(g)$ the Thompson permutation associated with $g$.
 
 These permutations are constructed in the following way.
-First, given an element of $F_3$ we draw $\mathcal{L}(g)$, then we draw the $x$-axis and number the interesection points. 
+First, given an element of $F_3$ we draw $\mathcal{L}(g)$, then we draw the $x$-axis and number the intersection points. 
 The number of these points coincides with that of the leaves of $g$.
 Denote these points by ${1, ..., n}$.
 Now for each component, we orient upward the strand passing through its leftmost intersection point with the $x$-axis.
