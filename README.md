@@ -38,7 +38,7 @@ The number of these points coincides with that of the leaves of $g$.
 Denote these points by ${1, ..., n}$.
 Now for each component, we orient upward the strand passing through its leftmost intersection point with the $x$-axis.
 This gives an orientation to the whole link.
-For each $i$ in ${1, ..., n}$, we decree that the Thompson permutation $\mathcal{P}(g)$ maps $i$ to the next integer met in $\mathcal{L}(g)$ moving along the given direction.
+For each $i$ in ${1, ..., n}$, we decree that the Thompson permutation $\mathcal{P}(g)$ maps $i$ to the next integer met in $\mathcal{L}(g)$ moving along the given direction. For example, in the element below we get $\mathcal{P}(g)=(0,2)(1,6,3,5,7,5)$
 
 <p align="center">
   <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/thompson_permutation.png" width="700" height="200"/>
