@@ -48,7 +48,9 @@ def top_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.nda
     """    
     This function computes the permutation associated with the (ternary) top tree of a positive Brown-Thompson element.
     The inputs are monoid_element = (a_0, a_1, ..., a_m), a vector whose entries are non-negative,
-    and a natural number, number_of_leaves, which is an odd number.
+    and a natural number, number_of_leaves, which is an odd number. 
+    The non-zero entries after the last non-zero entry do not matter 
+    (i.e. if we add a zero at the end of the vector, the output does not change).
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
     The monoid_element = (a_0, a_1, ..., a_m) represents the monoid element.
     a_0, ..., a_m are the exponents in its normal form.
@@ -101,6 +103,8 @@ def whole_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.n
     This function computes the Thompson permutation associated with the ternary tree diagram of a positive Brown-Thompson element g.
     The inputs are monoid_element = (a_0, a_1, ..., a_m), a vector whose entries are non-negative,
     and a natural number, number_of_leaves, which is an odd number.
+    The non-zero entries after the last non-zero entry do not matter 
+    (i.e. if we add a zero at the end of the vector, the output does not change).
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
     The monoid_element = (a_0, a_1, ..., a_m) represents the monoid element.
     a_0, ..., a_m are the exponents in its normal form.
@@ -136,15 +140,23 @@ def number_of_leaves(monoid_element: np.ndarray, max_dimension=1000) -> int:
     """
     This function finds the number of leaves in the reduced ternary tree representing an element in F_{3,+}.
     We use the "One-Way Forest Diagrams" description of F_3, in the spirit of [B]. 
-    The positive element is written as x_0^{a_0}\cdots x_n^{a_n} for some n, a_0, ..., a_{n - 1} (non-negative integers) and a_n (positive integer).
-    We have to consider all the non-negative integers 0, 1, 2, 3, 4, ...
+    This function computes the number of leaves of the minimal ternary tree diagram of a positive Brown-Thompson element g.
+    The inputs are monoid_element = (a_0, a_1, ..., a_m), an integer whose default value is 1000.
+    The non-zero entries in monoid_element after the last non-zero entry do not matter 
+    (i.e. if we add a zero at the end of the vector, the output does not change).
+    The vector monoid_element represents a positive element written in its normal form
+    as x_0^{a_0}\cdots x_n^{a_n} for some n, a_0, ..., a_{n - 1} (non-negative integers) and a_n (positive integer), n<=m.
+    
+    Here we describe how the function works.
+    First we consider all the non-negative integers 0, 1, 2, 3, 4, ... (for practical reasons we can only consider a finite number of them,
+    which is described by the variable max_dimension).
     We place carets above non-negative integers for each element appearing in the above expression, starting from the right, that is with x_n.
     We put a ternary caret above the integers n + 1, n + 2 and n + 3 (note the indices are shifted by 1, "traditionally" the caret would be above n, n + 1, n + 2 
     but for convenience we made this small change). 
     Now we re-number all the non-negative integers and the (n + 1)-th point is the root of the caret that we just placed, 
     while n + 4 is now n + 2, n + 5 is n + 3, and so on. 
     We continue with the other elements in x_0^{a_0}\cdots x_n^{a_{n - 1}} (again starting from the right) until we finish.
-    In this function we cannot store all the non-negative integers, so we create a vector called "integer_interval" with all integers 
+    In this function we cannot store all the non-negative integers, so we create a vector called "max_dimension" with all integers 
     from 0 to max_dimension and for each element in x_0^{a_0}\cdots x_n^{a_n} we remove 2 entries. For example, for x_n 
     we remove the (n + 2)-th and (n + 3)-th entries. Then if x_k appears in x_0^{a_0}\cdots x_n^{a_{n - 1}} as rightmost element, 
     we remove the (k + 2) and (k + 3)-th entries of the new vector and continue in the same way.
