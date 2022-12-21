@@ -60,8 +60,8 @@ It also determines the largest and smallest class of permutations in the file.
 def plot_data(csv_path: str):
   df = pd.read_csv(csv_path)
   df = df.groupby('orbits')['orbits'].count()
-  print("The largest class is :", df.idxmax())
-  print("The smallest class is :", df.idxmin())
+  print("The largest class is:", df.idxmax())
+  print("The smallest class is:", df.idxmin())
   df.plot()
   plt.xlabel('number of orbits')
   plt.ylabel('number of permutations')
