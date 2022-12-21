@@ -1,5 +1,7 @@
 import csv
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 from sympy.combinatorics import Permutation
 
 from src.math_library.monoid_elements_generator import MonoidElementsGenerator
@@ -50,6 +52,22 @@ def reduce_data_set(width: int, height: int, csv_path: str):
   df = df[df.apply(lambda row: all(column == 0 for column in row[width+2:9]), axis=1)]
   return df
             
+    
+"""
+This function plots the data contained in the csv file (stored in "csv_path"). 
+It also determines the largest and smallest class of permutations in the file.
+"""
+def plot_data(csv_path: str):
+  df = pd.read_csv(csv_path)
+  df = df.groupby('orbits')['orbits'].count()
+  print("The largest class is :", df.idxmax())
+  print("The smallest class is :", df.idxmin())
+  df.plot()
+  plt.xlabel('number of orbits')
+  plt.ylabel('number of permutations')
+  plt.legend()
+  return
+
 
             
 if __name__ == '__main__':
