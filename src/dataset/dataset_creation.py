@@ -12,7 +12,7 @@ With this function we create the dataset.
 The function create_dataset takes two inputs: a numpy array (containing all the vectors representing the positive elements that we will put 
 dataset) and a string (containing the path of the csv to be created).
 """
-def create_dataset(monoid_elements: np.ndarray, csv_path: str):
+def create_dataset(monoid_elements: np.ndarray, csv_path: str) -> None:
     _, width = monoid_elements.shape
     with open(csv_path, 'w') as f:
         writer = csv.writer(f)
@@ -46,7 +46,7 @@ def create_dataset(monoid_elements: np.ndarray, csv_path: str):
 This function takes the whole data set "data_final.csv" and produces a dataset of smaller height and width.
 csv_path is the location of the file "data_final.csv" in the computer.
 """
-def reduce_data_set(width: int, height: int, csv_path: str):
+def reduce_data_set(width: int, height: int, csv_path: str) -> pd.DataFrame:
   df = pd.read_csv(csv_path)
   df = df[df.apply(lambda row: all(column <= height for column in row[2:width+2]), axis=1)]
   df = df[df.apply(lambda row: all(column == 0 for column in row[width+2:9]), axis=1)]
@@ -57,7 +57,7 @@ def reduce_data_set(width: int, height: int, csv_path: str):
 This function plots the data contained in the csv file (stored in "csv_path"). 
 It also determines the largest and smallest class of permutations in the file.
 """
-def plot_data(csv_path: str):
+def plot_data(csv_path: str) -> None:
   df = pd.read_csv(csv_path)
   df = df.groupby('orbits')['orbits'].count()
   print("The largest class is:", df.idxmax())
@@ -66,7 +66,6 @@ def plot_data(csv_path: str):
   plt.xlabel('number of orbits')
   plt.ylabel('number of permutations')
   plt.legend()
-  return
 
 
             
