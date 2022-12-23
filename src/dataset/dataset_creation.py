@@ -43,7 +43,8 @@ def create_dataset(monoid_elements: np.ndarray, csv_path: str) -> None:
             )
 
 """
-This function takes the whole data set "data_final.csv" and produces a dataset of smaller height and width.
+This function takes the whole data set "data_final.csv" (available at https://zenodo.org/record/7424881) 
+and produces a dataset of smaller height and width.
 csv_path is the location of the file "data_final.csv" in the computer.
 """
 def reduce_data_set(width: int, height: int, csv_path: str) -> pd.DataFrame:
