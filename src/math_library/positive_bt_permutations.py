@@ -142,7 +142,7 @@ def number_of_leaves(monoid_element: np.ndarray, max_dimension=1000) -> int:
     We use the "One-Way Forest Diagrams" description of F_3, in the spirit of [B]. 
     This function computes the number of leaves of the minimal ternary tree diagram of a positive Brown-Thompson element g.
     The inputs are monoid_element = (a_0, a_1, ..., a_m), an integer whose default value is 1000.
-    The non-zero entries in monoid_element after the last non-zero entry do not matter 
+    The zero entries in monoid_element after the last non-zero entry do not matter 
     (i.e. if we add a zero at the end of the vector, the output does not change).
     The vector monoid_element represents a positive element written in its normal form
     as x_0^{a_0}\cdots x_n^{a_n} for some n, a_0, ..., a_{n - 1} (non-negative integers) and a_n (positive integer), n<=m.
