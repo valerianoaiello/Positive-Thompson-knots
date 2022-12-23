@@ -21,7 +21,7 @@ There is a natural injection of $F$ into $F_3$ which is obtained by mapping $y_i
 Correspondingly, we have an injection of $F_+$ into $F_{3,+}$.
 
 ## Jones construction of knots
-In 2014 Vaughan Jones defined a method to construct link from elements of the Thompson group $F$, which was later extended to the Brown-Thompson group $F_3$, [Jo14, Jo18]. Both $F$ and $F_3$ are just as a good as the braid groups at producing links. More precisely, for every link $L$ there exists an element $g$ such that its closure $\mathcal{L}(g)$ is equivalent to $L$.
+In 2014 Vaughan Jones defined a method to construct link from elements of the Thompson group $F$, which was later extended to the Brown-Thompson group $F_3$, [Jo14, Jo18]. Both $F$ and $F_3$ are just as a good as the braid groups for producing links. More precisely, for every link $L$ there exists an element $g$ such that its closure $\mathcal{L}(g)$ is equivalent to $L$.
 Here we exemplify the procedure
 <p align="center">
   <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/knots.png" />
@@ -60,7 +60,7 @@ the exponents that appear in the description the element as  $x_0^{a_0}\cdots x_
 
 ### dataset_creation.py
 
-This file contains three functions. One is "create_dataset", whose inputs are a numpy array "monoid_elements" (containing all the vectors representing the positive elements that we will put dataset) and a string "csv_path" (containing the path of the csv to be created). Another is "reduce_data_set". This function takes the whole data set "data_final.csv" and produces a dataset of smaller height and width. It takes two inputs "height", "width", "csv_path" (the path of the csv file containing all the data). Finally, the function "plot_data" is a function that plots the data contained in the csv file (stored in the input variable "csv_path"). It also determines the largest and smallest class of permutations in the file.
+This file contains three functions. One is "create_dataset", whose inputs are a numpy array "monoid_elements" (containing all the vectors representing the positive elements that we will put dataset) and a string "csv_path" (containing the path of the csv to be created). Another is "reduce_data_set". This function takes the whole data set "data_final.csv" (available at https://zenodo.org/record/7424881) and produces a dataset of smaller height and width. It takes two inputs "height", "width", "csv_path" (the path of the csv file containing all the data). Finally, the function "plot_data" is a function that plots the data contained in the csv file (stored in the input variable "csv_path"). It also determines the largest and smallest class of permutations in the file.
 
 
 We explored the permutations of elements with selected values of width and height. The results are stored in csv files and presented in [AiIo].
