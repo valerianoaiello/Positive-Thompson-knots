@@ -41,7 +41,7 @@ This gives an orientation to the whole link.
 For each $i$ in ${1, ..., n}$, we decree that the Thompson permutation $\mathcal{P}(g)$ maps $i$ to the next integer met in $\mathcal{L}(g)$ moving along the given direction. For example, in the element below we get $\mathcal{P}(g)=(0,2)(1,6,3,5,7,5)$
 
 <p align="center">
-  <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/thompson_permutation.png" width="700" height="200"/>
+  <img src="https://github.com/valerianoaiello/Positive-Thompson-knots/blob/main/.github/images/thompson_permutation.png" width="700" height="200"/>
 </p>
 
 ## Code
