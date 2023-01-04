@@ -10,11 +10,14 @@ The function "number_of_leaves" returns the number n of leaves of the trees in t
 The permutationo P(g) is going to act on {0, 1, 2, ..., n}.
 First we construct two permutations on {0, 1, 2, ..., n}: the bottom permutation associated with T_- and the top permutation associated with T_+.
 The former is produced by the function "bottom_permutation". Since the bottom tree of a positive element has always the same shape, this function takes only
-one argument: the number of leaves.
+one argument: the number of leaves. The output of this function is a permutation represented in the "one-line notation" 
+see https://en.wikipedia.org/wiki/Permutation#One-line_notation
 The latter permutation is produced by the function "top_permutation" which takes two arguments: the number of leaves and the normal form of the 
-element which is described by a vector v = (a_0,a_1, ..., a_m). 
+element which is described by a vector v = (a_0,a_1, ..., a_m). The output of this function is 
+a permutation represented in the "one-line notation" https://en.wikipedia.org/wiki/Permutation#One-line_notation#One-line_notation
 By using these two permutations, we finally construct the Thompson permutation with the function "whole_permutation". This function takes two arguments: 
-the number of leaves and the normal form of the element which is described by a vector v = (a_0,a_1, ..., a_m). 
+the number of leaves and the normal form of the element which is described by a vector v = (a_0,a_1, ..., a_m). The output of this function is 
+a permutation represented in the "cycle notation" https://en.wikipedia.org/wiki/Permutation#Cycle_notation
 """
 
 
@@ -24,6 +27,8 @@ def bottom_permutation(number_of_leaves: int) -> np.ndarray:
     The inputs is a natural number, number_of_leaves, which is an odd number.
     We only need an argument in this function because the bottom tree of a positive element has always the same shape.
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
+    The output returns the permutation represented as vectore in the "one-line notation", 
+    see https://en.wikipedia.org/wiki/Permutation#One-line_notation
     """
     if number_of_leaves % 2 == 0:
         print('The number is even')
@@ -54,6 +59,8 @@ def top_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.nda
     The output of this function is a permutation acting on {0, 1, ..., number_of_leaves}.
     The monoid_element = (a_0, a_1, ..., a_m) represents the monoid element.
     a_0, ..., a_m are the exponents in its normal form.
+    The output returns the permutation represented as vectore in the "one-line notation", 
+    see https://en.wikipedia.org/wiki/Permutation#One-line_notation
     """
     if number_of_leaves % 2 == 0:
         print('The number is even')
@@ -111,6 +118,7 @@ def whole_permutation(number_of_leaves: int, monoid_element: np.ndarray) -> np.n
     In this function we use the functions "top_permutation" and "bottom_permutation" to produce a pair of permutations: one for the 
     top tree and one for bottom tree, of the ternary tree diagram representing g. Then we combine them together to produce the 
     Thompson permutation P(g).
+    The permutation is represented with the "cycle notation" https://en.wikipedia.org/wiki/Permutation#Cycle_notation
     """
     top_permutation_ = top_permutation(number_of_leaves, monoid_element)
     bottom_permutation_ = bottom_permutation(number_of_leaves)
