@@ -58,6 +58,8 @@ In this file we present a function, called "whole_permutation" that produces $\m
 a natural number $k$ and a numpy vector $v=(a_0,a_1, ..., a_n)$ as an input and returns a permutations as a list (the elements of the list are the distict cycles of the permutation). The number $k$ is the number of leaves in the minimal representative in terms of ternary tree diagrams, while $v$ represents
 the exponents that appear in the description the element as  $x_0^{a_0}\cdots x_n^{a_n}$.
 
+Although, there is a unique reduced pair of tree diagrams for a given element described by its normal form, the functions "whole_permutation" and "top_permutation" take an integer $k$ as input argument because they are defined recursively and they remove a caret at each step. So we start from a reduced tree diagram, but with each deletion of a caret, we may produce a non-reduced tree diagram.
+
 ### dataset_creation.py
 
 This file contains three functions. One is "create_dataset", whose inputs are a numpy array "monoid_elements" (containing all the vectors representing the positive elements that we will put dataset) and a string "csv_path" (containing the path of the csv to be created). Another is "reduce_data_set". This function takes the whole data set "data_final.csv" (available at https://zenodo.org/record/7424881) and produces a dataset of smaller height and width. It takes two inputs "height", "width", "csv_path" (the path of the csv file containing all the data). Finally, the function "plot_data" is a function that plots the data contained in the csv file (stored in the input variable "csv_path"). It also determines the largest and smallest class of permutations in the file.
