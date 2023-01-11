@@ -18,6 +18,12 @@ a permutation represented in the "one-line notation" https://en.wikipedia.org/wi
 By using these two permutations, we finally construct the Thompson permutation with the function "whole_permutation". This function takes two arguments: 
 the number of leaves and the normal form of the element which is described by a vector v = (a_0,a_1, ..., a_m). The output of this function is 
 a permutation represented in the "cycle notation" https://en.wikipedia.org/wiki/Permutation#Cycle_notation
+
+
+Although, there is a unique reduced pair of tree diagrams for a given element described by its normal form, 
+the functions "whole_permutation" and "top_permutation" take an integer $k$ as input argument because they are defined recursively 
+and they remove a caret at each step. 
+So we start from a reduced tree diagram, but with each deletion of a caret, we may produce a non-reduced tree diagram.
 """
 
 
